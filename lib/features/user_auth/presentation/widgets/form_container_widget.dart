@@ -43,7 +43,7 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextFormField(
-        style: TextStyle(color: Colors.blue),
+        style: TextStyle(color: Colors.pink),
         controller: widget.controller,
         keyboardType: widget.inputType,
         key: widget.fieldKey,
@@ -63,7 +63,7 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
               });
             },
             child: 
-            widget.isPasswordField == true? Icon(_obscureText? Icons.visibility_off : Icons.visibility, color: _obscureText == false? Colors.blue : Colors.grey,) : SizedBox(),
+            widget.isPasswordField == true? Icon(_obscureText? Icons.visibility_off : Icons.visibility, color: _obscureText == false? Colors.pink : Colors.grey,) : SizedBox(),
           )
         ),
       )

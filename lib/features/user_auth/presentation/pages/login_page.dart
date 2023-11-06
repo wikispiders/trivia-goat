@@ -40,7 +40,7 @@ class LoginPage extends StatelessWidget {
                   width: double.infinity,
                   height: 45,
                   decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: Colors.pink,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
@@ -55,9 +55,9 @@ class LoginPage extends StatelessWidget {
                   SizedBox(width: 5,),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()));
+                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => SignUpPage()), (route) => false);
                     },
-                    child: Text("Sign Up", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold))
+                    child: Text("Sign Up", style: TextStyle(color: Colors.pink, fontWeight: FontWeight.bold))
 
                   ),
                 ],

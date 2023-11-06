@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frases_argentinas/features/user_auth/presentation/pages/login_page.dart';
 import 'package:frases_argentinas/features/user_auth/presentation/widgets/form_container_widget.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -47,6 +48,21 @@ class SignUpPage extends StatelessWidget {
                 child: Center(
                   child: Text("Sign Up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                 )
+              ),
+              SizedBox(height: 20,),
+              Row(mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Already have an account?"),
+                  SizedBox(width: 5,),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginPage()), (route) => false);
+                    },
+                    child: Text("Login", style: TextStyle(color: Colors.pink, fontWeight: FontWeight.bold))
+
+                  ),
+                ],
+
               ),
 
             ],
