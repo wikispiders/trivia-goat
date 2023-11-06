@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1091933963597-pepn496o8pt2qtavqchgg77835ub4597.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1091933963597-pepn496o8pt2qtavqchgg77835ub4597</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBwtPf62uscRu10E163ecE3YbHKaOfOXlg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1091933963597</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.wikispiders.frases.argentinas.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>frases-argentinas-dev</string>
+	<key>STORAGE_BUCKET</key>
+	<string>frases-argentinas-dev.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1091933963597:ios:0b3f6be629e33d92d72304</string>
+</dict>
+</plist>

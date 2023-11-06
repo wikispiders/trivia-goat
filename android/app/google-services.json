@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1091933963597",
+    "project_id": "frases-argentinas-dev",
+    "storage_bucket": "frases-argentinas-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091933963597:android:d42e712c5d52d16dd72304",
+        "android_client_info": {
+          "package_name": "com.wikispiders.frases.argentinas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091933963597-hje5vmo84ku6ie3g2ltbhgba5v3t8r5o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSgV_TjXq-OsvzvlHTMAcEpgYuIUZ0CK4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091933963597-eht0penqcld5sh8ei9ghal45mel14ctt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1091933963597-icqej3p73nmn2rub0t4766s4iqt6hbvf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wikispiders.frases.argentinas"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
