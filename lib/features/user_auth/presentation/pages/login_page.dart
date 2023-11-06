@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:frases_argentinas/features/user_auth/presentation/pages/home_page.dart';
+import 'package:frases_argentinas/features/user_auth/presentation/pages/signup_page.dart';
 import 'package:frases_argentinas/features/user_auth/presentation/widgets/form_container_widget.dart';
 
 class LoginPage extends StatelessWidget {
@@ -30,18 +32,37 @@ class LoginPage extends StatelessWidget {
                 isPasswordField: true,
               ),
               SizedBox(height: 30,),
-              Container(
-                width: double.infinity,
-                height: 45,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Center(
-                  child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-                )
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 45,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                  )
               ),
+              ),
+              SizedBox(height: 20,),
+              Row(mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Don't have an account?"),
+                  SizedBox(width: 5,),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()));
+                    },
+                    child: Text("Sign Up", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold))
 
+                  ),
+                ],
+
+              ),
             ],
           ),
         ),
