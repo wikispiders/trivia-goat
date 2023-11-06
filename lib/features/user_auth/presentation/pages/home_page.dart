@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,8 +10,27 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("HomePage"),
       ),
-      body: Center(
-        child: Text("La pag ppal"),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(child: Text("La pag ppal")),
+          SizedBox(height: 30,),
+          GestureDetector(
+            onTap: () {
+              FirebaseAuth.instance.signOut();
+              Navigator.pushNamed(context, "/login");
+            },
+            child: Container(
+              height: 45,
+              width: 100,
+              decoration: BoxDecoration(
+                color: Colors.pink,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Center(child: Text("Sign Out", style: TextStyle(color: Colors.white),),),
+            ),
+          )
+        ]
       ),
     );
   }
