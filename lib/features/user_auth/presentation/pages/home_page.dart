@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../global/common/toast.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -19,6 +21,7 @@ class HomePage extends StatelessWidget {
             onTap: () {
               FirebaseAuth.instance.signOut();
               Navigator.pushNamed(context, "/login");
+              showToast(message: "Successfully signed out");
             },
             child: Container(
               height: 45,

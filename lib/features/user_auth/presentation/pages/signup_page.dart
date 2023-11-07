@@ -4,6 +4,8 @@ import 'package:frases_argentinas/features/user_auth/presentation/firebase_auth/
 import 'package:frases_argentinas/features/user_auth/presentation/pages/login_page.dart';
 import 'package:frases_argentinas/features/user_auth/presentation/widgets/form_container_widget.dart';
 
+import '../../../../global/common/toast.dart';
+
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
   State<SignUpPage> createState() => _SignUpPageState();
@@ -11,7 +13,7 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final FirebaseAuthService _auth = FirebaseAuthService();
-
+  bool _isSigningUp = false;
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -71,7 +73,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
-                    child: Text("Sign Up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                    child: _isSigningUp? CircularProgressIndicator(color: Colors.white) : Text("Sign Up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                   )
                 ),
               ),
@@ -88,9 +90,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                   ),
                 ],
-
               ),
-
             ],
           ),
         ),
@@ -99,17 +99,22 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   void _signUp() async {
+    setState(() {
+      _isSigningUp = true;
+    });
     String username = _usernameController.text;
     String email = _emailController.text;
     String password = _passwordController.text;
 
     User? user = await _auth.signUpWithEmailAndPassword(email, password);
-
+    setState(() {
+      _isSigningUp = false;
+    });
     if (user != null) {
-      print("User successfully created");
+      showToast(message: "User is successfully created");
       Navigator.pushNamed(context, "/home");
     } else {
-      print("Error occurred signup");
-    }
+      showToast(message: "Some error happend");
+    }  
   }
 }

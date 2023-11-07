@@ -5,6 +5,8 @@ import 'package:frases_argentinas/features/user_auth/presentation/pages/home_pag
 import 'package:frases_argentinas/features/user_auth/presentation/pages/signup_page.dart';
 import 'package:frases_argentinas/features/user_auth/presentation/widgets/form_container_widget.dart';
 
+import '../../../../global/common/toast.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
   State<LoginPage> createState() => _LoginPageState();
@@ -12,7 +14,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final FirebaseAuthService _auth = FirebaseAuthService();
-
+  bool _isSigning = false;
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
@@ -62,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
-                    child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                    child: _isSigning? CircularProgressIndicator(color: Colors.white,) : Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                   )
               ),
               ),
@@ -89,16 +91,22 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _login() async {
+    setState(() {
+      _isSigning = true;
+    });
     String email = _emailController.text;
     String password = _passwordController.text;
 
     User? user = await _auth.signInWithEmailAndPassword(email, password);
+    setState(() {
+      _isSigning = false;
+    });
 
     if (user != null) {
-      print("User successfully login");
+      showToast(message: "User is successfully signed in");
       Navigator.pushNamed(context, "/home");
     } else {
-      print("Error occurred login");
+      showToast(message: "Incorrect email or password");
     }
   }
 }
