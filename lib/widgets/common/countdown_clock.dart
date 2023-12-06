@@ -1,44 +1,75 @@
-import 'dart:async';
+//import 'dart:async';
 import 'package:flutter/material.dart';
 
 class CountdownClock extends StatefulWidget {
   final int timeToStart;
-  const CountdownClock({super.key, required this.timeToStart});
+
+  const CountdownClock({Key? key, required this.timeToStart}) : super(key: key);
 
   @override
   _CountdownClockState createState() => _CountdownClockState();
 }
 
-class _CountdownClockState extends State<CountdownClock> {
-  late int countdown;
-  late Timer _timer;
+class _CountdownClockState extends State<CountdownClock>
+    with TickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  int countdown = 0;
 
   @override
   void initState() {
     super.initState();
     countdown = widget.timeToStart;
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (countdown > 0) {
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
+
+    _animation = Tween<double>(
+      begin: 1.0,
+      end: 0.0,
+    ).animate(_controller);
+
+    _controller.forward();
+
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
         setState(() {
           countdown -= 1;
+          _controller.reset();
+          if (countdown > 1) _controller.forward();
         });
-      } else {
-        timer.cancel();
       }
     });
   }
 
   @override
   void dispose() {
-    _timer.cancel(); 
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      '$countdown',
-      style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+    return Center(
+      child: AnimatedBuilder(
+        animation: _animation,
+        builder: (context, child) {
+          return Opacity(
+            opacity: _animation.value,
+            child: Text(
+              '$countdown',
+              style: const TextStyle(
+                fontSize: 60,
+                color: Colors.grey,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Roboto',
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

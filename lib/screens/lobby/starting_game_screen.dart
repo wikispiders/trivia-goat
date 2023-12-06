@@ -13,10 +13,15 @@ class StartingGameScreen extends StatelessWidget {
         children: [
           const Text(
             'El juego está por comenzar',
-            style: TextStyle(fontSize: 18),
+            style: TextStyle(
+              fontSize: 36,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Roboto',
+            ),
+            textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 20),
-          CountdownClock(timeToStart: timeToStart,),
+          const SizedBox(height: 75),
+          CountdownClock(timeToStart: timeToStart),
         ],
       ),
     );
