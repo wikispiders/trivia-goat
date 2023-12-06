@@ -6,7 +6,7 @@ import 'package:frases_argentinas/client_messages/client_message.dart';
 import 'package:frases_argentinas/event_handler/server_event_handler.dart';
 
 class Middleware {
-  static const baseUri = "ws://192.168.0.160:4040";
+  static const baseUri = "ws://192.168.1.58:4040";
   late WebSocket _channel;
 
   Middleware();
@@ -32,7 +32,6 @@ class Middleware {
         ServerEventHandler handler = ServerEventHandler.fromEncodedData(data);
         print('hay un handler');
         handler.execute();
-      
       },
       onDone: () {
         print('CREATOR: Connection closed');
@@ -41,7 +40,6 @@ class Middleware {
         print('CREATOR: Error: $error');
       },
     );
-
   }
 
   void sendMessage(ClientMessage message) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frases_argentinas/provider/game_state_provider.dart';
-import 'package:frases_argentinas/widgets/common/timer_bar.dart';
+import 'package:frases_argentinas/widgets/common/circular_timer.dart';
 import 'package:frases_argentinas/widgets/game/question.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/game/questions_list.dart';
@@ -15,7 +15,7 @@ class Questions extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        TimerBar(time: time),
+        CircularTimer(totalTimeInSeconds: time),
         Question(question: question),
         const SizedBox(height: 10),
         const QuestionsList(),

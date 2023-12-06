@@ -18,30 +18,27 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AppServices().usernameProvider),
         ChangeNotifierProvider(create: (_) => AppServices().appStateProvider),
         ChangeNotifierProvider(create: (_) => AppServices().lobbyProvider),
-        ChangeNotifierProvider(create: (_) => AppServices().gameStateProvider),        
+        ChangeNotifierProvider(create: (_) => AppServices().gameStateProvider),
       ],
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
-        ).copyWith(),
-
-        home: Consumer<AppStateProvider>(
-          builder: (context, appStateProvider, child) {
-            return Scaffold(
-              appBar: const TitleWidget(),
-              body: Container(
-                color: Theme.of(context).colorScheme.primaryContainer,  // Usar un tono claro de gris o cualquier color que desees
-                child: Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: appStateProvider.currentScreen
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            useMaterial3: true,
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
+          ).copyWith(),
+          home: Consumer<AppStateProvider>(
+            builder: (context, appStateProvider, child) {
+              return Scaffold(
+                appBar: const TitleWidget(),
+                body: Container(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  child: Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: appStateProvider.currentScreen),
                 ),
-              ),
-            );
-          },
-        )
-      ),
+              );
+            },
+          )),
     );
   }
 }
