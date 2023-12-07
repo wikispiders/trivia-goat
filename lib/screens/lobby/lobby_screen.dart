@@ -24,9 +24,9 @@ class LobbyScreen extends StatelessWidget {
             'ID Juego: $gameId',
             textAlign: TextAlign.center,
             style: const TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+              fontSize: 28, // Letra más grande
+              fontWeight: FontWeight.bold, // Negrita
+              color: Colors.white, // Color de la letra
             ),
           ),
         ),
@@ -67,3 +67,5 @@ class LobbyScreen extends StatelessWidget {
     );
   }
 }
+//LO QUE QUIERO: Mitad de la pantalla superior de un color, mitad inferior de otro. El nombre de un usuario en la mitad superior y el del otro en la inferior.
+//ID de partida en una franja a través de toda la pantalla, parte superior{}
