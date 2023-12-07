@@ -9,7 +9,7 @@ class JoinHome extends StatefulWidget {
 }
 
 class _JoinHomeState extends State<JoinHome> {
-  TextEditingController _controller = TextEditingController(); 
+  TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,7 +17,7 @@ class _JoinHomeState extends State<JoinHome> {
       children: <Widget>[
         TextField(
           controller: _controller,
-          decoration: InputDecoration(labelText: 'Enter Text'),
+          decoration: InputDecoration(labelText: 'Ingrese el ID de la partida'),
         ),
         SizedBox(height: 20),
         ElevatedButton(

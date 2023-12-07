@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:frases_argentinas/app_services/app_services.dart';
 import 'package:frases_argentinas/client_messages/start_game.dart';
 import 'package:frases_argentinas/widgets/lobby/players_list.dart';
+import 'package:frases_argentinas/widgets/lobby/type_widget.dart';
+import 'package:frases_argentinas/widgets/lobby/amount_widget.dart';
+import 'package:frases_argentinas/widgets/lobby/category_widget.dart';
 
 class LobbyScreen extends StatelessWidget {
   final bool isCreator;
   final int gameId;
-  const LobbyScreen({super.key, required this.isCreator, required this.gameId});
+  const LobbyScreen({Key? key, required this.isCreator, required this.gameId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +18,7 @@ class LobbyScreen extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          color: const Color.fromARGB(
-              255, 247, 162, 221), // Cambiar color de la mitad superior
+          color: Colors.blue,
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: Text(
             'ID Juego: $gameId',
@@ -28,15 +31,38 @@ class LobbyScreen extends StatelessWidget {
           ),
         ),
         PlayersList(),
-        SizedBox(height: 20),
-        isCreator
-            ? ElevatedButton(
+        const SizedBox(height: 20),
+        if (isCreator)
+          Column(
+            children: [
+              Container(
+                width: 150,
+                height: 50,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.pink),
+                  borderRadius: const BorderRadius.horizontal(
+                    left: Radius.circular(50.0),
+                    right: Radius.circular(50.0),
+                  ),
+                  color: const Color.fromARGB(255, 255, 244, 248),
+                ),
+                padding: const EdgeInsets.only(top: 10),
+                child: const AmountWidget(),
+              ),
+              const SizedBox(height: 10),
+              CategoryWidget(),
+              const SizedBox(height: 10),
+              TypeWidget(),
+              const SizedBox(height: 20),
+              ElevatedButton(
                 onPressed: () {
                   AppServices().middlewareService.sendMessage(StartGame());
                 },
-                child: Text('Presiona para comenzar'),
-              )
-            : Text('Esperando al creador'),
+                child: const Text('Presiona para comenzar'),
+              ),
+            ],
+          ),
+        if (!isCreator) const Text('Esperando al creador'),
       ],
     );
   }
