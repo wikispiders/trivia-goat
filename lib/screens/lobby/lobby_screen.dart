@@ -56,7 +56,8 @@ class LobbyScreen extends StatelessWidget {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  AppServices().middlewareService.sendMessage(StartGame());
+                  // TODO: agregar parametros de los widgets.
+                  AppServices().middlewareService.sendMessage(StartGame('10', 10, 'multiple'));
                 },
                 child: const Text('Presiona para comenzar'),
               ),
