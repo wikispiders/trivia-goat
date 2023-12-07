@@ -6,7 +6,7 @@ import 'package:frases_argentinas/client_messages/client_message.dart';
 import 'package:frases_argentinas/event_handler/server_event_handler.dart';
 
 class Middleware {
-  static const baseUri = "ws://192.168.0.160:4040";
+  static const baseUri = "ws://192.168.0.250:4040";
   late WebSocket _channel;
 
   Middleware();
