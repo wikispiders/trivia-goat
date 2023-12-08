@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frases_argentinas/app_services/app_services.dart';
+import 'package:frases_argentinas/screens/lobby/home_screen.dart';
 import 'package:frases_argentinas/client_messages/start_game.dart';
 import 'package:frases_argentinas/widgets/lobby/players_list.dart';
 import 'package:frases_argentinas/widgets/lobby/type_widget.dart';
@@ -101,7 +102,17 @@ class LobbyScreen extends StatelessWidget {
               ),
             ],
           ),
-        if (!isCreator) const Text('Waiting for the creator'),
+        if (!isCreator)
+          TextButton(
+            onPressed: () {
+              () => AppServices().appStateProvider.setScreen(
+                  const HomeScreen()); //TODO: Chequear que salga de la sesion y eso
+            },
+            child: const Icon(
+              Icons.arrow_back,
+              size: 40,
+            ),
+          ),
       ],
     );
   }
