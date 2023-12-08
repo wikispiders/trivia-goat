@@ -7,15 +7,20 @@ import 'package:provider/provider.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  @override
+    @override
   Widget build(BuildContext context) {
     UsernameProvider userNameProvider = Provider.of<UsernameProvider>(context);
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          Image.network(
+           'https://opentdb.com/images/logo.png',
+           width: 300,   
+           height: 300,  
+         ),
           Container(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0),
             decoration: BoxDecoration(
               border: Border.all(
                 color: Colors.pink,
@@ -25,30 +30,23 @@ class HomeScreen extends StatelessWidget {
             ),
             child: TextField(
               onChanged: userNameProvider.setUsername,
-              decoration: const InputDecoration(
-                  hintText: 'Name',
-                  hintStyle: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 15.0,
-                  ),
-                  labelText: 'Enter your name',
-                  labelStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25.0,
-                  )),
+              decoration: InputDecoration(hintText: 'Nombre de jugador',
+            hintStyle: TextStyle(color: Colors.grey, fontSize: 15.0,),
+            labelText: 'Ingrese su nombre',
+            labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0,)),
             ),
           ),
-          const SizedBox(height: 20),
+          SizedBox(height: 20),
           ElevatedButton(
             onPressed: AppServices().middlewareService.create,
-            child: const Text('NEW GAME'),
+            child: Text('NUEVA PARTIDA'),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: 30),
           ElevatedButton(
-            onPressed: () =>
-                AppServices().appStateProvider.setScreen(JoinHome()),
-            child: const Text('JOIN GAME'),
+            onPressed: ()=> AppServices().appStateProvider.setScreen(JoinHome()),
+            child: Text('UNIRSE A UNA PARTIDA'),
           ),
+          
         ],
       ),
     );
