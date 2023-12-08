@@ -4,14 +4,15 @@ import 'package:frases_argentinas/provider/username_provider.dart';
 import 'package:frases_argentinas/widgets/lobby/join_home.dart';
 import 'package:provider/provider.dart';
 
+import 'package:frases_argentinas/screens/lobby/constants.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-@override
+
+ @override
   Widget build(BuildContext context) {
     UsernameProvider userNameProvider = Provider.of<UsernameProvider>(context);
-    
 
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 255, 217, 229),
@@ -24,30 +25,41 @@ class HomeScreen extends StatelessWidget {
               width: 300,
               height: 300,
             ),
+             Text(
+                        'Welcome!',
+                        style: TextStyle(
+                          color: Colors.pink,
+                          fontFamily: 'OpenSans',
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 10.0),
             Container(
-              padding: EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.pink,
-                  width: 5.0,
-                ),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
+              alignment: Alignment.centerLeft,
+              decoration: kBoxDecorationStyle,
+              height: 60.0,
               child: TextField(
                 onChanged: userNameProvider.setUsername,
-                decoration: InputDecoration(
-                  hintText: 'Player Game',
-                  hintStyle: TextStyle(color: Colors.grey, fontSize: 15.0),
-                  labelText: 'Insert your name',
-                  labelStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.0,
-                  ),
-                ),
+              style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+              decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 1.0),
+              prefixIcon: Icon(
+                Icons.person,
+                color: Colors.white,
+              ),
+              hintText: 'Enter your Name',
+              hintStyle: kHintTextStyle,
+            ),
               ),
             ),
-            SizedBox(height: 20),
-            ElevatedButton.icon(
+
+            SizedBox(height: 50),
+             ElevatedButton.icon(
               onPressed: AppServices().middlewareService.create,
               icon: Icon(Icons.games),
               label: Text(
@@ -83,7 +95,6 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
-
           ],
         ),
       ),
