@@ -12,7 +12,7 @@ class StartingGameScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            'El juego está por comenzar',
+            'Game is about to start',
             style: TextStyle(
               fontSize: 36,
               fontWeight: FontWeight.bold,
