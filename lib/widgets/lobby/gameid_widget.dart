@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frases_argentinas/widgets/lobby/clipboard_widget.dart'; // Importa tu nueva clase
+import 'package:frases_argentinas/widgets/lobby/clipboard_widget.dart';
+import 'package:frases_argentinas/widgets/lobby/wpp_share_widget.dart';
 
 class GameIDWidget extends StatelessWidget {
   final int gameId;
@@ -14,7 +15,7 @@ class GameIDWidget extends StatelessWidget {
     return Container(
       width: double.infinity,
       color: Colors.blue,
-      padding: const EdgeInsets.symmetric(vertical: 20),
+      //padding: const EdgeInsets.symmetric(vertical: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -31,6 +32,7 @@ class GameIDWidget extends StatelessWidget {
             textToCopy: gameId.toString(),
             tooltip: 'Copy Game ID',
           ),
+          WhatsAppShareButton(gameId: gameId),
         ],
       ),
     );
