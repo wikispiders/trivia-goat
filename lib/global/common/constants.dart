@@ -26,3 +26,5 @@ List<String> myCategories = [
 ];
 
 const int categoryOffset = 9;
+
+List<String> myTypes = ['Multiple Choice', 'True or False'];

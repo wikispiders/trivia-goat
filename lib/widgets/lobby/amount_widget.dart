@@ -12,7 +12,7 @@ class AmountWidget extends StatefulWidget {
 }
 
 class _AmountWidgetState extends State<AmountWidget> {
-  late int? numberOfQuestions;
+  late int? numberOfQuestions = null;
   final TextEditingController _controller = TextEditingController();
 
   @override

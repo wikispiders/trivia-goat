@@ -43,7 +43,6 @@ class _CategoryWidgetState extends State<CategoryWidget> {
           child: DropdownButton<String>(
             value: _selectedCategory,
             hint: const Text('Category'),
-            //isExpanded: true,
             icon: const Icon(Icons.arrow_drop_down),
             iconSize: 24,
             elevation: 16,
