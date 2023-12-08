@@ -3,7 +3,7 @@ import 'package:frases_argentinas/provider/lobby_provider.dart';
 import 'package:provider/provider.dart';
 
 class PlayersList extends StatelessWidget {
-  const PlayersList({super.key});
+  const PlayersList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +13,57 @@ class PlayersList extends StatelessWidget {
       child: ListView.builder(
         itemCount: playersList.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(playersList[index]),
-          );
+          return _buildPlayerListItem(index + 1, playersList[index]);
         },
+      ),
+    );
+  }
+
+  Widget _buildPlayerListItem(int playerNumber, String playerName) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
+      child: Container(
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(137, 233, 30, 98),
+          borderRadius: BorderRadius.horizontal(
+            left: Radius.circular(50.0),
+            right: Radius.circular(50.0),
+          ),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
+        child: Row(
+          children: [
+            Container(
+              width: 40,
+              height: 40,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                'J$playerNumber',
+                style: const TextStyle(
+                    color: Colors.pink,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    fontFamily: 'Roboto'),
+              ),
+            ),
+            const SizedBox(width: 30),
+            Expanded(
+              child: Text(
+                playerName,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                  fontFamily: 'Roboto',
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -12,29 +12,33 @@ class GameIDWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      color: Colors.blue,
-      //padding: const EdgeInsets.symmetric(vertical: 5),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Game ID: $gameId',
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+    return Column(
+      children: [
+        const Divider(thickness: 2, color: Colors.pink), // Línea superior
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Game ID: $gameId',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black45,
+                ),
+              ),
+              CopyToClipboardButton(
+                textToCopy: gameId.toString(),
+                tooltip: 'Copy Game ID',
+              ),
+              WhatsAppShareButton(gameId: gameId),
+            ],
           ),
-          CopyToClipboardButton(
-            textToCopy: gameId.toString(),
-            tooltip: 'Copy Game ID',
-          ),
-          WhatsAppShareButton(gameId: gameId),
-        ],
-      ),
+        ),
+        const Divider(thickness: 2, color: Colors.pink), // Línea inferior
+      ],
     );
   }
 }

@@ -30,7 +30,7 @@ class CopyToClipboardButton extends StatelessWidget {
         _copyToClipboard(context);
       },
       tooltip: tooltip,
-      color: Colors.white,
+      color: Colors.blueGrey,
       iconSize: 20,
     );
   }

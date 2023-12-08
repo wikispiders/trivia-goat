@@ -9,12 +9,17 @@ class WhatsAppShareButton extends StatelessWidget {
     required this.gameId,
   }) : super(key: key);
 
-  Future<void> _shareGameId() async {
+  Future<void> _shareGameId(BuildContext context) async {
     final url = Uri.parse('whatsapp://send?text=Game ID: $gameId');
     if (await canLaunchUrl(url)) {
       await launchUrl(url);
     } else {
-      throw 'Could not launch $url';
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('WhatsApp message could not be sent'),
+          duration: Duration(seconds: 2),
+        ),
+      );
     }
   }
 
@@ -22,10 +27,10 @@ class WhatsAppShareButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       icon: const Icon(Icons.share),
-      onPressed: _shareGameId,
+      onPressed: () => _shareGameId(context),
       tooltip: 'Share Game ID via WhatsApp',
-      color: Colors.white,
-      iconSize: 20,
+      color: Colors.lightBlue,
+      iconSize: 22,
     );
   }
 }

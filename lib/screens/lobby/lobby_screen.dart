@@ -22,7 +22,7 @@ class LobbyScreen extends StatelessWidget {
     return Column(
       children: [
         GameIDWidget(gameId: gameId),
-        PlayersList(),
+        const PlayersList(),
         if (isCreator)
           Column(
             children: [
