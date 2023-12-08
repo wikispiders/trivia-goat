@@ -5,6 +5,7 @@ import 'package:frases_argentinas/widgets/lobby/players_list.dart';
 import 'package:frases_argentinas/widgets/lobby/type_widget.dart';
 import 'package:frases_argentinas/widgets/lobby/amount_widget.dart';
 import 'package:frases_argentinas/widgets/lobby/category_widget.dart';
+import 'package:frases_argentinas/global/common/constants.dart';
 
 class LobbyScreen extends StatelessWidget {
   final bool isCreator;
@@ -65,7 +66,9 @@ class LobbyScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              const CategoryWidget(),
+              CategoryWidget(
+                key: CategoryWidget.categoryKey,
+              ),
               const SizedBox(height: 10),
               const TypeWidget(),
               const SizedBox(height: 20),
@@ -73,15 +76,22 @@ class LobbyScreen extends StatelessWidget {
                 onPressed: () {
                   final numberOfQuestions =
                       AmountWidget.amountKey.currentState?.numberOfQuestions;
-                  if (numberOfQuestions != null) {
+                  final chosenCategoryIndex = CategoryWidget
+                      .categoryKey.currentState?.selectedCategoryIndex;
+
+                  if (numberOfQuestions != null &&
+                      chosenCategoryIndex != null) {
+                    final chosenCategory = chosenCategoryIndex + categoryOffset;
+                    final chosenCategoryString = chosenCategory.toString();
                     AppServices().middlewareService.sendMessage(
-                          StartGame('10', numberOfQuestions, 'multiple'),
+                          StartGame(chosenCategoryString, numberOfQuestions,
+                              'multiple'),
                         );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
-                        content:
-                            Text('Please, choose a number between 1 and 50'),
+                        content: Text(
+                            'Please, check if all parameters are correctly chosen'),
                         duration: Duration(seconds: 2),
                       ),
                     );

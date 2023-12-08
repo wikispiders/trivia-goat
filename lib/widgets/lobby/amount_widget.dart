@@ -47,7 +47,7 @@ class _AmountWidgetState extends State<AmountWidget> {
       decoration: const InputDecoration(
         border: InputBorder.none,
         hintText: 'Number of Questions',
-        hintStyle: TextStyle(fontSize: 12),
+        hintStyle: TextStyle(fontSize: 14),
       ),
     );
   }
