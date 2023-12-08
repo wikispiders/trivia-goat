@@ -5,6 +5,7 @@ import 'package:frases_argentinas/widgets/lobby/players_list.dart';
 import 'package:frases_argentinas/widgets/lobby/type_widget.dart';
 import 'package:frases_argentinas/widgets/lobby/amount_widget.dart';
 import 'package:frases_argentinas/widgets/lobby/category_widget.dart';
+import 'package:frases_argentinas/widgets/lobby/gameid_widget.dart';
 import 'package:frases_argentinas/global/common/constants.dart';
 
 class LobbyScreen extends StatelessWidget {
@@ -20,20 +21,7 @@ class LobbyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          width: double.infinity,
-          color: Colors.blue,
-          padding: const EdgeInsets.symmetric(vertical: 20),
-          child: Text(
-            'Game ID: $gameId',
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-        ),
+        GameIDWidget(gameId: gameId),
         PlayersList(),
         if (isCreator)
           Column(
@@ -103,7 +91,13 @@ class LobbyScreen extends StatelessWidget {
                     );
                   }
                 },
-                child: const Text('Press to start'),
+                style: ElevatedButton.styleFrom(
+                  textStyle: const TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                child: const Text('START'),
               ),
             ],
           ),
