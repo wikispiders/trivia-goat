@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
               border: Border.all(
                 color: Colors.pink,
@@ -25,23 +25,30 @@ class HomeScreen extends StatelessWidget {
             ),
             child: TextField(
               onChanged: userNameProvider.setUsername,
-              decoration: InputDecoration(hintText: 'Nombre de jugador',
-            hintStyle: TextStyle(color: Colors.grey, fontSize: 15.0,),
-            labelText: 'Ingrese su nombre',
-            labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0,)),
+              decoration: const InputDecoration(
+                  hintText: 'Name',
+                  hintStyle: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 15.0,
+                  ),
+                  labelText: 'Enter your name',
+                  labelStyle: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25.0,
+                  )),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           ElevatedButton(
             onPressed: AppServices().middlewareService.create,
-            child: Text('NUEVA PARTIDA'),
+            child: const Text('NEW GAME'),
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           ElevatedButton(
-            onPressed: ()=> AppServices().appStateProvider.setScreen(JoinHome()),
-            child: Text('UNIRSE A UNA PARTIDA'),
+            onPressed: () =>
+                AppServices().appStateProvider.setScreen(JoinHome()),
+            child: const Text('JOIN GAME'),
           ),
-          
         ],
       ),
     );

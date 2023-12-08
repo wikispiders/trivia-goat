@@ -9,8 +9,11 @@ import 'package:frases_argentinas/widgets/lobby/category_widget.dart';
 class LobbyScreen extends StatelessWidget {
   final bool isCreator;
   final int gameId;
-  const LobbyScreen({Key? key, required this.isCreator, required this.gameId})
-      : super(key: key);
+  const LobbyScreen({
+    Key? key,
+    required this.isCreator,
+    required this.gameId,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +24,12 @@ class LobbyScreen extends StatelessWidget {
           color: Colors.blue,
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: Text(
-            'ID Juego: $gameId',
+            'Game ID: $gameId',
             textAlign: TextAlign.center,
             style: const TextStyle(
-              fontSize: 28, // Letra más grande
-              fontWeight: FontWeight.bold, // Negrita
-              color: Colors.white, // Color de la letra
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
             ),
           ),
         ),
@@ -35,8 +38,18 @@ class LobbyScreen extends StatelessWidget {
         if (isCreator)
           Column(
             children: [
+              const SizedBox(height: 10),
+              const Text(
+                'How many questions?',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.pink,
+                ),
+              ),
+              const SizedBox(height: 10),
               Container(
-                width: 150,
+                width: 180,
                 height: 50,
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.pink),
@@ -46,27 +59,40 @@ class LobbyScreen extends StatelessWidget {
                   ),
                   color: const Color.fromARGB(255, 255, 244, 248),
                 ),
-                padding: const EdgeInsets.only(top: 10),
-                child: const AmountWidget(),
+                alignment: Alignment.center,
+                child: AmountWidget(
+                  key: AmountWidget.amountKey,
+                ),
               ),
               const SizedBox(height: 10),
-              CategoryWidget(),
+              const CategoryWidget(),
               const SizedBox(height: 10),
-              TypeWidget(),
+              const TypeWidget(),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // TODO: agregar parametros de los widgets.
-                  AppServices().middlewareService.sendMessage(StartGame('10', 10, 'multiple'));
+                  final numberOfQuestions =
+                      AmountWidget.amountKey.currentState?.numberOfQuestions;
+                  if (numberOfQuestions != null) {
+                    AppServices().middlewareService.sendMessage(
+                          StartGame('10', numberOfQuestions, 'multiple'),
+                        );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content:
+                            Text('Please, choose a number between 1 and 50'),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  }
                 },
-                child: const Text('Presiona para comenzar'),
+                child: const Text('Press to start'),
               ),
             ],
           ),
-        if (!isCreator) const Text('Esperando al creador'),
+        if (!isCreator) const Text('Waiting for the creator'),
       ],
     );
   }
 }
-//LO QUE QUIERO: Mitad de la pantalla superior de un color, mitad inferior de otro. El nombre de un usuario en la mitad superior y el del otro en la inferior.
-//ID de partida en una franja a través de toda la pantalla, parte superior{}

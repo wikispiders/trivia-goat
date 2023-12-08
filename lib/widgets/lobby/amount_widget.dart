@@ -1,69 +1,60 @@
 import 'package:flutter/material.dart';
-//import 'package:frases_argentinas/app_services/app_services.dart';
+//import 'package:flutter/services.dart';
 
 class AmountWidget extends StatefulWidget {
   const AmountWidget({Key? key}) : super(key: key);
 
   @override
   _AmountWidgetState createState() => _AmountWidgetState();
+
+  static final GlobalKey<_AmountWidgetState> amountKey =
+      GlobalKey<_AmountWidgetState>();
 }
 
 class _AmountWidgetState extends State<AmountWidget> {
-  int numberOfQuestions = 1;
+  late int? numberOfQuestions;
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        IconButton(
-          onPressed: () {
-            if (numberOfQuestions > 1) {
-              setState(() {
-                numberOfQuestions--;
-              });
-            }
-          },
-          icon: const Icon(Icons.remove),
-        ),
-        Text(
-          '  $numberOfQuestions  ',
-          style: const TextStyle(
-              fontSize: 20, color: Colors.pink, fontWeight: FontWeight.bold),
-        ),
-        IconButton(
-          onPressed: () {
-            if (numberOfQuestions < 50) {
-              setState(() {
-                numberOfQuestions++;
-              });
-            }
-          },
-          icon: const Icon(Icons.add),
-        ),
-      ],
+    return TextField(
+      controller: _controller,
+      textAlign: TextAlign.center,
+      keyboardType: TextInputType.number,
+      onChanged: (value) {
+        final parsedValue = int.tryParse(value);
+        if (parsedValue != null && parsedValue >= 1 && parsedValue <= 50) {
+          setState(() {
+            numberOfQuestions = parsedValue;
+          });
+        }
+      },
+      onSubmitted: (value) {
+        final parsedValue = int.tryParse(value);
+        if (parsedValue == null || parsedValue < 1 || parsedValue > 50) {
+          _controller.clear();
+          setState(() {
+            numberOfQuestions = null;
+          });
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Please, choose a number between 1 and 50'),
+              duration: Duration(seconds: 2),
+            ),
+          );
+        }
+      },
+      decoration: const InputDecoration(
+        border: InputBorder.none,
+        hintText: 'Number of Questions',
+        hintStyle: TextStyle(fontSize: 12),
+      ),
     );
   }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 }
-
-
-
-
-
-
-
-
-
-
-//   Widget build(BuildContext context) {
-//     return Container(
-//       margin: const EdgeInsets.only(top: 10),
-//       child: ElevatedButton(
-//         onPressed: () {
-//           // Action for amount widget button
-//         },
-//         child: Text('Amount Widget'),
-//       ),
-//     );
-//   }
-// }
