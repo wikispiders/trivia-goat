@@ -35,11 +35,9 @@ class LobbyScreen extends StatelessWidget {
           ),
         ),
         PlayersList(),
-        const SizedBox(height: 20),
         if (isCreator)
           Column(
             children: [
-              const SizedBox(height: 10),
               const Text(
                 'How many questions?',
                 style: TextStyle(
@@ -70,7 +68,9 @@ class LobbyScreen extends StatelessWidget {
                 key: CategoryWidget.categoryKey,
               ),
               const SizedBox(height: 10),
-              const TypeWidget(),
+              TypeWidget(
+                key: TypeWidget.typeKey,
+              ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
@@ -78,14 +78,20 @@ class LobbyScreen extends StatelessWidget {
                       AmountWidget.amountKey.currentState?.numberOfQuestions;
                   final chosenCategoryIndex = CategoryWidget
                       .categoryKey.currentState?.selectedCategoryIndex;
+                  final chosenTypeIndex =
+                      TypeWidget.typeKey.currentState?.selectedTypeIndex;
 
                   if (numberOfQuestions != null &&
-                      chosenCategoryIndex != null) {
+                      chosenCategoryIndex != null &&
+                      chosenTypeIndex != null) {
                     final chosenCategory = chosenCategoryIndex + categoryOffset;
                     final chosenCategoryString = chosenCategory.toString();
+                    final chosenTypeString =
+                        chosenTypeIndex == 0 ? 'multiple' : 'boolean';
+
                     AppServices().middlewareService.sendMessage(
                           StartGame(chosenCategoryString, numberOfQuestions,
-                              'multiple'),
+                              chosenTypeString),
                         );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
