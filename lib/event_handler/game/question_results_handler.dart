@@ -8,8 +8,9 @@ class QuestionResultsHandler extends ServerEventHandler {
   final String correctAnswer;
   final List<UserAnswer> usersAnswers;
   final int time;
+  final List<String> options;
 
-  QuestionResultsHandler(this.question, this.correctAnswer, this.usersAnswers, this.time);
+  QuestionResultsHandler(this.question, this.correctAnswer, this.usersAnswers, this.time, this.options);
 
   @override
   bool execute() {
@@ -18,7 +19,8 @@ class QuestionResultsHandler extends ServerEventHandler {
         question: question, 
         correctAnswer: correctAnswer,
         usersAnswers: usersAnswers,
-        time: time
+        time: time,
+        options: options,
       )
     );
     return true;

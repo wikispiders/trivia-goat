@@ -8,6 +8,7 @@ class QuestionResults extends StatelessWidget {
   final String correctAnswer;
   final List<UserAnswer> usersAnswers;
   final int time;
+  final List<String> options;
 
   const QuestionResults({
     Key? key,
@@ -15,10 +16,136 @@ class QuestionResults extends StatelessWidget {
     required this.correctAnswer,
     required this.usersAnswers,
     required this.time,
+    required this.options,
   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
+@override
+Widget build(BuildContext context) {
+  bool isWrongAnswerSelected =
+      usersAnswers.isNotEmpty && usersAnswers[0].answer != correctAnswer;
+
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      TimerBar(time: time),
+      Question(question: question),
+      const SizedBox(height: 10),
+      Column(
+        children: options.map((option) {
+          bool isCorrectAnswer = option == correctAnswer;
+          bool isSelected = usersAnswers.isNotEmpty && usersAnswers[0].answer == option;
+
+          return Column(
+            children: [
+              Container(
+                height: 70,
+                padding: const EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(92, 255, 255, 255),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: isSelected
+                        ? isCorrectAnswer
+                            ? Colors.green
+                            : Colors.red
+                        : isCorrectAnswer && isWrongAnswerSelected
+                            ? Colors.green
+                            : Colors.white24,
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        option,
+                        style: const TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    if (isSelected)
+                      isCorrectAnswer
+                          ? buildCorrectIcon()
+                          : buildWrongIcon()
+                    else if (isCorrectAnswer && isWrongAnswerSelected)
+                      buildCorrectIcon()
+                    else
+                      const SizedBox.shrink(),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20), // Espacio entre opciones
+            ],
+          );
+        }).toList(),
+      ),
+    ],
+  );
+}
+
+
+Widget buildCorrectIcon() => const CircleAvatar(
+      radius: 15,
+      backgroundColor: Colors.green,
+      child: Icon(
+        Icons.check,
+        color: Colors.white,
+      ),
+    );
+
+Widget buildWrongIcon() => const CircleAvatar(
+      radius: 15,
+      backgroundColor: Colors.red,
+      child: Icon(
+        Icons.close,
+        color: Colors.white,
+      ),
+    );
+}
+
+    
+    /*
+        return Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 10.0,
+      ),
+      child: Container(
+        height: 70,
+        padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(92, 255, 255, 255),
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: myAnswer == option? Colors.grey.shade600 :Colors.white24,
+          ),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                option,
+                style: const TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+    
+    */
+    
+    
+    
+    
+    
+    
+    
+    /*
+    
+    
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -107,5 +234,4 @@ class QuestionResults extends StatelessWidget {
         ),
       ],
     );
-  }
-}
+    */
