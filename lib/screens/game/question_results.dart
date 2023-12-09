@@ -121,7 +121,7 @@ class _QuestionResultsState extends State<QuestionResults>
                         child: Text(
                           option,
                           style: const TextStyle(
-                            fontSize: 18,
+                            fontSize: 16,
                           ),
                         ),
                       ),

@@ -7,14 +7,14 @@ class TitleWidget extends StatelessWidget implements PreferredSizeWidget{
   Widget build(BuildContext context) {
     return AppBar(
       title: const Text(
-        'WHO SAID THAT?',  // Título deseado
+        'TRIVIA',  
         style: TextStyle(
-          fontWeight: FontWeight.bold,  // Aplicar estilo de negrita
-          color: Colors.white,  // Color rosa
+          fontWeight: FontWeight.bold,  
+          color: Colors.white,  
         ),
       ),
-      centerTitle: true,  // Centrar el título
-      backgroundColor: Theme.of(context).primaryColor,  // Color del fondo del AppBar
+      centerTitle: true, 
+      backgroundColor: Theme.of(context).primaryColor,  
     );
   }
   

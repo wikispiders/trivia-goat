@@ -28,7 +28,7 @@ class AnswerCard extends StatelessWidget {
               child: Text(
                 option,
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                 ),
               ),
             ),
