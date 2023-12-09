@@ -30,6 +30,25 @@ Widget build(BuildContext context) {
       TimerBar(time: time),
       Question(question: question),
       const SizedBox(height: 10),
+      if (isWrongAnswerSelected)
+        Text(
+          'INCORRECTO',
+          style: TextStyle(
+            color: Colors.red,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      if (!isWrongAnswerSelected && usersAnswers.isNotEmpty)
+        Text(
+          'CORRECTO',
+          style: TextStyle(
+            color: Colors.green,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      const SizedBox(height: 10),
       Column(
         children: options.map((option) {
           bool isCorrectAnswer = option == correctAnswer;
@@ -75,7 +94,7 @@ Widget build(BuildContext context) {
                   ],
                 ),
               ),
-              const SizedBox(height: 20), // Espacio entre opciones
+              const SizedBox(height: 10), // Espacio entre opciones
             ],
           );
         }).toList(),
@@ -83,6 +102,7 @@ Widget build(BuildContext context) {
     ],
   );
 }
+
 
 
 Widget buildCorrectIcon() => const CircleAvatar(
@@ -103,6 +123,10 @@ Widget buildWrongIcon() => const CircleAvatar(
       ),
     );
 }
+
+
+
+
 
     
     /*
