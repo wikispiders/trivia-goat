@@ -3,7 +3,7 @@ import 'package:frases_argentinas/models/user_answer.dart';
 import 'package:frases_argentinas/widgets/common/timer_bar.dart';
 import 'package:frases_argentinas/widgets/game/question.dart';
 
-class QuestionResults extends StatelessWidget {
+class QuestionResults extends StatefulWidget {
   final String question;
   final String correctAnswer;
   final List<UserAnswer> usersAnswers;
@@ -19,91 +19,133 @@ class QuestionResults extends StatelessWidget {
     required this.options,
   }) : super(key: key);
 
-@override
-Widget build(BuildContext context) {
-  bool isWrongAnswerSelected =
-      usersAnswers.isNotEmpty && usersAnswers[0].answer != correctAnswer;
-
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: [
-      TimerBar(time: time),
-      Question(question: question),
-      const SizedBox(height: 10),
-      if (isWrongAnswerSelected)
-        Text(
-          'INCORRECTO',
-          style: TextStyle(
-            color: Colors.red,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      if (!isWrongAnswerSelected && usersAnswers.isNotEmpty)
-        Text(
-          'CORRECTO',
-          style: TextStyle(
-            color: Colors.green,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      const SizedBox(height: 10),
-      Column(
-        children: options.map((option) {
-          bool isCorrectAnswer = option == correctAnswer;
-          bool isSelected = usersAnswers.isNotEmpty && usersAnswers[0].answer == option;
-
-          return Column(
-            children: [
-              Container(
-                height: 70,
-                padding: const EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(92, 255, 255, 255),
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: isSelected
-                        ? isCorrectAnswer
-                            ? Colors.green
-                            : Colors.red
-                        : isCorrectAnswer && isWrongAnswerSelected
-                            ? Colors.green
-                            : Colors.white24,
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        option,
-                        style: const TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    if (isSelected)
-                      isCorrectAnswer
-                          ? buildCorrectIcon()
-                          : buildWrongIcon()
-                    else if (isCorrectAnswer && isWrongAnswerSelected)
-                      buildCorrectIcon()
-                    else
-                      const SizedBox.shrink(),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10), // Espacio entre opciones
-            ],
-          );
-        }).toList(),
-      ),
-    ],
-  );
+  @override
+  _QuestionResultsState createState() => _QuestionResultsState();
 }
 
+class _QuestionResultsState extends State<QuestionResults>
+    with TickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _scaleAnimation;
+  late Animation<double> _opacityAnimation;
 
+  @override
+  void initState() {
+    super.initState();
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 500),
+    );
+
+    _scaleAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    );
+
+    _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    );
+
+    // Inicia la animación cuando la respuesta es incorrecta
+    if (widget.usersAnswers.isNotEmpty) {
+      _animationController.forward();
+    }
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    bool isWrongAnswerSelected =
+        widget.usersAnswers.isNotEmpty &&
+            widget.usersAnswers[0].answer != widget.correctAnswer;
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        TimerBar(time: widget.time),
+        Question(question: widget.question),
+        const SizedBox(height: 10),
+        AnimatedBuilder(
+          animation: _animationController,
+          builder: (context, child) {
+            return Transform.scale(
+              scale: _scaleAnimation.value,
+              child: Opacity(
+                opacity: _opacityAnimation.value,
+                child: Text(
+                  isWrongAnswerSelected ? 'INCORRECTO' : 'CORRECTO',
+                  style: TextStyle(
+                    color: isWrongAnswerSelected ? Colors.red : Colors.green,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+        const SizedBox(height: 10),
+        Column(
+          children: widget.options.map((option) {
+            bool isCorrectAnswer = option == widget.correctAnswer;
+            bool isSelected =
+                widget.usersAnswers.isNotEmpty &&
+                    widget.usersAnswers[0].answer == option;
+
+            return Column(
+              children: [
+                Container(
+                  height: 70,
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(92, 255, 255, 255),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: isSelected
+                          ? isCorrectAnswer
+                              ? Colors.green
+                              : Colors.red
+                          : isCorrectAnswer && isWrongAnswerSelected
+                              ? Colors.green
+                              : Colors.white24,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          option,
+                          style: const TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      if (isSelected)
+                        isCorrectAnswer
+                            ? buildCorrectIcon()
+                            : buildWrongIcon()
+                      else if (isCorrectAnswer && isWrongAnswerSelected)
+                        buildCorrectIcon()
+                      else
+                        const SizedBox.shrink(),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 10), // Espacio entre opciones
+              ],
+            );
+          }).toList(),
+        ),
+      ],
+    );
+  }
+}
 
 Widget buildCorrectIcon() => const CircleAvatar(
       radius: 15,
@@ -122,10 +164,6 @@ Widget buildWrongIcon() => const CircleAvatar(
         color: Colors.white,
       ),
     );
-}
-
-
-
 
 
     
