@@ -19,7 +19,7 @@ class AnswerCard extends StatelessWidget {
           color: const Color.fromARGB(92, 255, 255, 255),
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: myAnswer == option? Colors.grey.shade600 :Colors.white24,
+            color: myAnswer == option ? Colors.grey.shade600 : Colors.white24,
           ),
         ),
         child: Row(

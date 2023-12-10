@@ -37,7 +37,7 @@ class _TypeWidgetState extends State<TypeWidget> {
               left: Radius.circular(50.0),
               right: Radius.circular(50.0),
             ),
-            color: const Color.fromARGB(255, 255, 244, 248),
+            color: CustomColors.widgetWhite,
           ),
           alignment: Alignment.center,
           child: DropdownButton<String>(
