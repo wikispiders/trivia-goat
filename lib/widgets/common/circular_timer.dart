@@ -46,8 +46,8 @@ class CircularTimerState extends State<CircularTimer>
         strokeWidth: 8.0,
       ),
       child: const SizedBox(
-        width: 80,
-        height: 80,
+        width: 50,
+        height: 50,
       ),
     );
   }

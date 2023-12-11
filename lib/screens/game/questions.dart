@@ -16,6 +16,7 @@ class Questions extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         CircularTimer(totalTimeInSeconds: time),
+        const SizedBox(height: 10),
         Question(question: question),
         const SizedBox(height: 10),
         const QuestionsList(),

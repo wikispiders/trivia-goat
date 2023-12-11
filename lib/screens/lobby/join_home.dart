@@ -70,7 +70,7 @@ class _JoinHomeState extends State<JoinHome> {
             ),
             const SizedBox(height: 30),
             ElevatedButton(
-              onPressed: _joinGame,
+              onPressed: ()=> AppServices().middlewareService.join(_controller.text),
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
                   fontSize: 24,
