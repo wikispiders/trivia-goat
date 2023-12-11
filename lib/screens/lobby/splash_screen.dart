@@ -1,19 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:frases_argentinas/screens/lobby/home_screen.dart';
 import 'package:frases_argentinas/widgets/home/loading_widget.dart';
 
-//BORRAR ESTO E INTEGRAR CON EL BACK
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SplashScreen(),
-    );
-  }
-}
+import '../../app_services/app_services.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -25,8 +14,13 @@ class _SplashScreenState extends State<SplashScreen>
   late AnimationController _controller;
   late Animation<double> _animation;
 
+
   @override
   void initState() {
+    Future.delayed(Duration(seconds: 20), () {
+      AppServices().appStateProvider.setScreen(HomeScreen());
+    });
+    
     super.initState();
 
     _controller = AnimationController(
