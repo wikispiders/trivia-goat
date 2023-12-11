@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 20), () {
+    Future.delayed(Duration(seconds: 6), () {
       AppServices().appStateProvider.setScreen(HomeScreen());
     });
     

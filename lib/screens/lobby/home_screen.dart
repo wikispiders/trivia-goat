@@ -58,43 +58,67 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 50),
             ElevatedButton.icon(
-              onPressed: AppServices().middlewareService.create,
-              icon: const Icon(Icons.games),
-              label: const Text(
-                'New Game',
-                style: TextStyle(fontSize: 25),
-              ),
-              style: ButtonStyle(
-                elevation: MaterialStateProperty.all<double>(5.0),
-                shadowColor: MaterialStateProperty.all<Color>(
-                    CustomColors.buttonShadowPink),
-                shape: MaterialStateProperty.all<OutlinedBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
-            ElevatedButton.icon(
-              onPressed: () =>
-                  AppServices().appStateProvider.setScreen(const JoinHome()),
-              icon: const Icon(Icons.start),
-              label: const Text(
-                'Join Game',
-                style: TextStyle(fontSize: 25),
-              ),
-              style: ButtonStyle(
-                elevation: MaterialStateProperty.all<double>(5.0),
-                shadowColor: MaterialStateProperty.all<Color>(
-                    CustomColors.buttonShadowPink),
-                shape: MaterialStateProperty.all<OutlinedBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-              ),
-            ),
+  onPressed: () {
+    if (userNameProvider.username.isNotEmpty) {
+      AppServices().middlewareService.create();
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please, insert a player name'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
+  },
+  icon: const Icon(Icons.games),
+  label: const Text(
+    'New Game',
+    style: TextStyle(fontSize: 25),
+  ),
+  style: ButtonStyle(
+    elevation: MaterialStateProperty.all<double>(5.0),
+    shadowColor: MaterialStateProperty.all<Color>(
+      CustomColors.buttonShadowPink,
+    ),
+    shape: MaterialStateProperty.all<OutlinedBorder>(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+    ),
+  ),
+),
+const SizedBox(height: 10),
+ElevatedButton.icon(
+  onPressed: () {
+    if (userNameProvider.username.isNotEmpty) {
+      AppServices().appStateProvider.setScreen(const JoinHome());
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please, insert a player name'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
+  },
+  icon: const Icon(Icons.start),
+  label: const Text(
+    'Join Game',
+    style: TextStyle(fontSize: 25),
+  ),
+  style: ButtonStyle(
+    elevation: MaterialStateProperty.all<double>(5.0),
+    shadowColor: MaterialStateProperty.all<Color>(
+      CustomColors.buttonShadowPink,
+    ),
+    shape: MaterialStateProperty.all<OutlinedBorder>(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+    ),
+  ),
+),
+
             SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
           ],
         ),
