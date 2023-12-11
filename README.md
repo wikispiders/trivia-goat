@@ -1,6 +1,12 @@
 # frases_argentinas
 
-A new Flutter project.
+TODO
+
+-Agregar pantallas splash_screen, question_results, answer_list, partial_results y end_of_game al programa
+-Agregar validaciones pantalla de home
+-Conectar partial_results al back
+-Ver tema de puntajes totales y parciales en back
+-Agregar numero de jugador (J1, .... , Jn) al player (opcional)
 
 ## Getting Started
 

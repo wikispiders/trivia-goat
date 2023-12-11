@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frases_argentinas/app_services/app_services.dart';
+import 'package:frases_argentinas/global/common/constants.dart';
 import 'package:frases_argentinas/screens/lobby/home_screen.dart';
-import 'package:frases_argentinas/screens/lobby/constants.dart';
-
 
 class JoinHome extends StatefulWidget {
   const JoinHome({Key? key}) : super(key: key);
@@ -11,9 +10,22 @@ class JoinHome extends StatefulWidget {
   State<JoinHome> createState() => _JoinHomeState();
 }
 
-
 class _JoinHomeState extends State<JoinHome> {
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
+
+  void _joinGame() {
+    final gameId = _controller.text.trim();
+    if (gameId.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please enter a valid Game ID'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    } else {
+      AppServices().middlewareService.join(gameId);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +38,7 @@ class _JoinHomeState extends State<JoinHome> {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(color: Colors.pink, width: 2),
+            color: CustomColors.widgetWhite,
           ),
           child: IconButton(
             icon: const Icon(Icons.arrow_back, color: Colors.pink),

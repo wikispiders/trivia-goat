@@ -40,7 +40,8 @@ abstract class ServerEventHandler {
             && decodedData.containsKey('players_answers') && decodedData.containsKey('time_next_event')) {
           return QuestionResultsHandler(decodedData['question'], decodedData['correct_answer'], 
                                         List<UserAnswer>.from(decodedData['players_answers'].map((element) => UserAnswer.fromJson(element))),
-                                        decodedData['time_next_event'],decodedData['options'].cast<String>());
+                                        decodedData['time_next_event'],decodedData['options'].cast<String>(),
+                                        decodedData['screen']);
         }
 
       default:

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TitleWidget extends StatelessWidget implements PreferredSizeWidget{
+class TitleWidget extends StatelessWidget implements PreferredSizeWidget {
   const TitleWidget({super.key});
 
   @override
@@ -17,7 +17,7 @@ class TitleWidget extends StatelessWidget implements PreferredSizeWidget{
       backgroundColor: Theme.of(context).primaryColor,  
     );
   }
-  
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

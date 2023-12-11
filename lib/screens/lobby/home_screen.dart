@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:frases_argentinas/app_services/app_services.dart';
 import 'package:frases_argentinas/provider/username_provider.dart';
-import 'package:frases_argentinas/widgets/lobby/join_home.dart';
+import 'package:frases_argentinas/screens/lobby/join_home.dart';
 import 'package:provider/provider.dart';
 
-import 'package:frases_argentinas/screens/lobby/constants.dart';
+import 'package:frases_argentinas/global/common/constants.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-
- @override
+  @override
   Widget build(BuildContext context) {
     UsernameProvider userNameProvider = Provider.of<UsernameProvider>(context);
 
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 217, 229),
+      backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -25,73 +24,75 @@ class HomeScreen extends StatelessWidget {
               width: 300,
               height: 300,
             ),
-             Text(
-                        'Welcome!',
-                        style: TextStyle(
-                          color: Colors.pink,
-                          fontFamily: 'OpenSans',
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 10.0),
+            const Text(
+              'Welcome!',
+              style: TextStyle(
+                color: Colors.pink,
+                fontFamily: 'OpenSans',
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 10.0),
             Container(
               alignment: Alignment.centerLeft,
               decoration: kBoxDecorationStyle,
               height: 60.0,
               child: TextField(
                 onChanged: userNameProvider.setUsername,
-              style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-              decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 1.0),
-              prefixIcon: Icon(
-                Icons.person,
-                color: Colors.white,
-              ),
-              hintText: 'Enter your Name',
-              hintStyle: kHintTextStyle,
-            ),
-              ),
-            ),
-
-            SizedBox(height: 50),
-             ElevatedButton.icon(
-              onPressed: AppServices().middlewareService.create,
-              icon: Icon(Icons.games),
-              label: Text(
-                  'New Game',
-                  style: TextStyle(fontSize: 25),  // Ajusta el tamaño del texto según tus necesidades
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'OpenSans',
                 ),
-                style: ButtonStyle(
-                elevation: MaterialStateProperty.all<double>(5.0), // Ajusta el valor según tus necesidades
-                shadowColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 136, 175)), // Ajusta el color de la sombra según tus necesidades
-                shape: MaterialStateProperty.all<OutlinedBorder>(
-                RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0), // Ajusta el radio de la esquina según tus necesidades
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  contentPadding: const EdgeInsets.only(top: 1.0),
+                  prefixIcon: const Icon(
+                    Icons.person,
+                    color: Colors.white,
+                  ),
+                  hintText: 'Enter your Name',
+                  hintStyle: kHintTextStyle,
                 ),
               ),
-              ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 50),
             ElevatedButton.icon(
-              onPressed: ()=> AppServices().appStateProvider.setScreen(JoinHome()),
-              icon: Icon(Icons.start),
-              label: Text(
-                  'Join Game',
-                  style: TextStyle(fontSize: 25),  // Ajusta el tamaño del texto según tus necesidades
-                ),
+              onPressed: AppServices().middlewareService.create,
+              icon: const Icon(Icons.games),
+              label: const Text(
+                'New Game',
+                style: TextStyle(fontSize: 25),
+              ),
               style: ButtonStyle(
-                elevation: MaterialStateProperty.all<double>(5.0), // Ajusta el valor según tus necesidades
-                shadowColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 136, 175)), // Ajusta el color de la sombra según tus necesidades
+                elevation: MaterialStateProperty.all<double>(5.0),
+                shadowColor: MaterialStateProperty.all<Color>(
+                    CustomColors.buttonShadowPink),
                 shape: MaterialStateProperty.all<OutlinedBorder>(
-                RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0), // Ajusta el radio de la esquina según tus necesidades
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                 ),
               ),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton.icon(
+              onPressed: () =>
+                  AppServices().appStateProvider.setScreen(const JoinHome()),
+              icon: const Icon(Icons.start),
+              label: const Text(
+                'Join Game',
+                style: TextStyle(fontSize: 25),
+              ),
+              style: ButtonStyle(
+                elevation: MaterialStateProperty.all<double>(5.0),
+                shadowColor: MaterialStateProperty.all<Color>(
+                    CustomColors.buttonShadowPink),
+                shape: MaterialStateProperty.all<OutlinedBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
               ),
             ),
             SizedBox(height: MediaQuery.of(context).viewInsets.bottom),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frases_argentinas/provider/lobby_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:frases_argentinas/global/common/constants.dart';
 
 class PlayersList extends StatelessWidget {
   const PlayersList({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class PlayersList extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
       child: Container(
         decoration: const BoxDecoration(
-          color: Color.fromARGB(137, 233, 30, 98),
+          color: CustomColors.playerListPink,
           borderRadius: BorderRadius.horizontal(
             left: Radius.circular(50.0),
             right: Radius.circular(50.0),

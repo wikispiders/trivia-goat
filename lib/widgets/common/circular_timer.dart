@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:frases_argentinas/global/common/constants.dart';
 
 class CircularTimer extends StatefulWidget {
   final int totalTimeInSeconds;
@@ -41,7 +42,7 @@ class CircularTimerState extends State<CircularTimer>
     return CustomPaint(
       painter: TimerPainter(
         fillValue: _animation.value,
-        color: const Color.fromARGB(255, 255, 59, 196),
+        color: CustomColors.timerPink,
         strokeWidth: 8.0,
       ),
       child: const SizedBox(

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
-import 'package:frases_argentinas/screens/lobby/constants.dart';
+import 'package:frases_argentinas/global/common/constants.dart';
 
 void main() {
   runApp(MyApp());
