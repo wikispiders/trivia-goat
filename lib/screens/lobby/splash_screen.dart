@@ -14,13 +14,12 @@ class _SplashScreenState extends State<SplashScreen>
   late AnimationController _controller;
   late Animation<double> _animation;
 
-
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 6), () {
-      AppServices().appStateProvider.setScreen(HomeScreen());
+    Future.delayed(const Duration(seconds: 9), () {
+      AppServices().appStateProvider.setScreen(const HomeScreen());
     });
-    
+
     super.initState();
 
     _controller = AnimationController(
@@ -67,11 +66,6 @@ class _SplashScreenState extends State<SplashScreen>
                 width: 200,
                 height: 200,
               ),
-              //     Image.network(
-              //   'https://logodix.com/logo/295595.png',
-              //   width: 300,
-              //   height: 300,
-              // ),
             ),
             const SizedBox(height: 100),
             LoadingWidget(),

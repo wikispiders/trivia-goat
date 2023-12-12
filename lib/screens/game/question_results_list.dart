@@ -23,16 +23,7 @@ class QuestionResultsList extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Question(question: question),
-        const SizedBox(height: 20),
-        Text(
-          correctAnswer,
-          style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 22, 206, 22),
-          ),
-        ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 50),
         Column(
           children: usersAnswers
               .map((answer) => UserAnswerWidget(
