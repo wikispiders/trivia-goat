@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 import 'package:frases_argentinas/app_services/app_services.dart';
@@ -16,9 +17,14 @@ class EndOfGame extends StatelessWidget {
     required this.usersAnswers,
   }) : super(key: key);
 
+  
 
   @override
   Widget build(BuildContext context) {
+    List<UserAnswer> orderedAnswers = usersAnswers.toList();
+    orderedAnswers.sort((a, b) => b.points - a.points);
+    orderedAnswers = orderedAnswers.sublist(0, min(orderedAnswers.length, 3));
+
     return Scaffold(
       backgroundColor: Colors.pink[50],
       body: Center(
@@ -26,77 +32,99 @@ class EndOfGame extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-            alignment: Alignment.center,
-            decoration: kBoxDecorationStyle,
-            height: 60.0,
-            width: 200,
-            child: Text(
-              'Podium!',
-              style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'OpenSans',
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
+              alignment: Alignment.center,
+              decoration: kBoxDecorationStyle,
+              height: 60.0,
+              width: 200,
+              child: const Text(
+                'Podium!',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'OpenSans',
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-          ),
-            SizedBox(height: 10),
+            PodiumList(orderedAnswers: orderedAnswers),
             FutureBuilder<void>(
-              future: Future.delayed(Duration(seconds: 1)),
+              future: Future.delayed(Duration(seconds: 1+orderedAnswers.length*2)),
               builder: (context, snapshot) => snapshot.connectionState == ConnectionState.done
-                  ? PodiumAvatar(
-                      playerName: 'Milagros',
-                      rank: 1,
-                    )
-                  : SizedBox.shrink(),
+                ? ElevatedButton(
+                    onPressed: (){AppServices().middlewareService.sendMessage(PlayAgain());},
+                    style: ButtonStyle(
+                      elevation: MaterialStateProperty.all<double>(5.0), 
+                      shadowColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 136, 175)), 
+                      shape: MaterialStateProperty.all<OutlinedBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0), 
+                        ),
+                      ),
+                    ),
+                    child: const Text('PLAY AGAIN'),
+                  ): const SizedBox.shrink(),
             ),
-            SizedBox(height: 10),
-            FutureBuilder<void>(
-              future: Future.delayed(Duration(seconds: 3)),
-              builder: (context, snapshot) => snapshot.connectionState == ConnectionState.done
-                  ? PodiumAvatar(
-                      playerName: 'Mateo',
-                      rank: 2,
-                    )
-                  : SizedBox.shrink(),
-            ),
-            SizedBox(height: 10),
-            FutureBuilder<void>(
-              future: Future.delayed(Duration(seconds: 5)),
-              builder: (context, snapshot) => snapshot.connectionState == ConnectionState.done
-                  ? PodiumAvatar(
-                      playerName: 'Tomas',
-                      rank: 3,
-                    )
-                  : SizedBox.shrink(),
-            ),
-            SizedBox(height: 10),
-            FutureBuilder<void>(
-              future: Future.delayed(Duration(seconds: 7)),
-              builder: (context, snapshot) => snapshot.connectionState == ConnectionState.done
-                  ? ElevatedButton(
-            onPressed: (){AppServices().middlewareService.sendMessage(PlayAgain());},
-              style: ButtonStyle(
-              elevation: MaterialStateProperty.all<double>(5.0), 
-              shadowColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 136, 175)), 
-              shape: MaterialStateProperty.all<OutlinedBorder>(
-              RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0), 
-              ),
-            ),
-            ),
-            
-            child: const Text('PLAY AGAIN'),
-          )
-                  : SizedBox.shrink(),
-            ),
-
           ],
         ),
       ),
     );
   }
 }
+
+
+
+
+class PodiumList extends StatelessWidget {
+  final List<UserAnswer> orderedAnswers;
+  const PodiumList({super.key, required this.orderedAnswers});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: orderedAnswers.length,
+      itemBuilder: (context, index) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(height: 10),
+            FutureBuilder<void>(
+              future: Future.delayed(Duration(seconds: 1 + index * 2)),
+              builder: (context, snapshot) => snapshot.connectionState == ConnectionState.done
+                  ? PodiumAvatar(
+                      playerName: orderedAnswers[index].name,
+                      rank: index+1,
+                    )
+                  : const SizedBox.shrink(),
+            ),
+          ],
+        );
+      }
+    );
+  }
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class PodiumAvatar extends StatefulWidget {
   final String playerName;
