@@ -76,7 +76,7 @@ class _QuestionResultsState extends State<QuestionResults>
               child: Opacity(
                 opacity: _opacityAnimation.value,
                 child: Text(
-                  isWrongAnswerSelected ? 'INCORRECTO' : 'CORRECTO',
+                  isWrongAnswerSelected ? 'INCORRECT' : 'CORRECT',
                   style: TextStyle(
                     color: isWrongAnswerSelected ? Colors.red : Colors.green,
                     fontSize: 20,
