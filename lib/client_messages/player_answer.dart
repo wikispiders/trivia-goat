@@ -9,12 +9,12 @@ class PlayerAnswer extends ClientMessage {
 
   @override
   String encode() {
-    final creatorData = {
+    final answerData = {
       'event': 'submit_answer',
       'question': question,
       'answer': answer,
 
     };
-    return jsonEncode(creatorData);
+    return jsonEncode(answerData);
   }
 }

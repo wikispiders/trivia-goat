@@ -11,13 +11,13 @@ class StartGame extends ClientMessage {
 
   @override
   String encode() {
-    final creatorData = {
+    final startGameData = {
       'event': 'start_game',
       'category': category,
       'type': type,
       'amount_questions': amount
 
     };
-    return jsonEncode(creatorData);
+    return jsonEncode(startGameData);
   }
 }
