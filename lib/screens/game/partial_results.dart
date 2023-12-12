@@ -3,22 +3,23 @@ import 'package:animated_list_plus/animated_list_plus.dart';
 import 'package:animated_list_plus/transitions.dart';
 import 'package:frases_argentinas/widgets/game/player_result.dart';
 
-// void main() {
-//   runApp(const PartialResultsApp());
-// }
+import '../../models/user_answer.dart';
 
-class PartialResultsApp extends StatelessWidget {
-  const PartialResultsApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: PartialResultsScreen(),
-    );
-  }
-}
 
 class PartialResultsScreen extends StatefulWidget {
+  final String question;
+  final String correctAnswer;
+  final List<UserAnswer> usersAnswers;
+  final int time;
+  
+  const PartialResultsScreen({
+    Key? key,
+    required this.question,
+    required this.correctAnswer,
+    required this.usersAnswers,
+    required this.time,
+  }) : super(key: key);
+
   @override
   _PartialResultsScreenState createState() => _PartialResultsScreenState();
 }
@@ -30,12 +31,7 @@ class _PartialResultsScreenState extends State<PartialResultsScreen> {
   @override
   void initState() {
     super.initState();
-    playerDataList = [
-      PlayerData('J1', 'L', 100),
-      PlayerData('J2', 'Z', 80),
-      PlayerData('J3', 'T', 82),
-      // ... más jugadores
-    ];
+    playerDataList = widget.usersAnswers.map((e) => PlayerData(e.name[0], e.name, e.points)).toList();
 
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {

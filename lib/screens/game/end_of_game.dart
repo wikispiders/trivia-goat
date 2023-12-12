@@ -3,11 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 import 'package:frases_argentinas/global/common/constants.dart';
 
-void main() {
-  runApp(MyApp());
-}
+import '../../models/user_answer.dart';
 
-class MyApp extends StatelessWidget {
+
+class EndOfGame extends StatelessWidget {
+  final List<UserAnswer> usersAnswers;
+  
+  const EndOfGame({
+    Key? key,
+    required this.usersAnswers,
+  }) : super(key: key);
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

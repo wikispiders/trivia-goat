@@ -5,6 +5,7 @@ import 'package:frases_argentinas/models/user_answer.dart';
 import 'package:frases_argentinas/screens/game/partial_results.dart';
 import 'package:frases_argentinas/screens/game/question_results.dart';
 
+import '../../screens/game/end_of_game.dart';
 import '../../screens/game/question_results_list.dart';
 
 class QuestionResultsHandler extends ServerEventHandler {
@@ -38,13 +39,18 @@ class QuestionResultsHandler extends ServerEventHandler {
           time: time,
       );
       print('El screen es 1');
-      // case 2:
-      //   resultsScreen = PartialResultsScreen(
-      //     question: question, 
-      //     correctAnswer: correctAnswer,
-      //     usersAnswers: usersAnswers,
-      //     time: time,
-      // );
+      case 2:
+        resultsScreen = PartialResultsScreen(
+          question: question, 
+          correctAnswer: correctAnswer,
+          usersAnswers: usersAnswers,
+          time: time,
+      );
+      case 3:
+        print('se cambia la screeen');
+        resultsScreen = EndOfGame(
+          usersAnswers: usersAnswers,
+      );
       default:
         throw Error();
     }
