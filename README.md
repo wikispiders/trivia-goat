@@ -1,8 +1,5 @@
 # frases_argentinas
 
-TODO
-
--Ver tema de puntajes totales y parciales en back
 
 ## Getting Started
 
