@@ -105,8 +105,8 @@ class LobbyScreen extends StatelessWidget {
         if (!isCreator)
           TextButton(
             onPressed: () {
-              () => AppServices().appStateProvider.setScreen(
-                  const HomeScreen()); //TODO: Chequear que salga de la sesion y eso
+              () =>
+                  AppServices().appStateProvider.setScreen(const HomeScreen());
             },
             child: const Icon(
               Icons.arrow_back,

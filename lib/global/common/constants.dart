@@ -36,6 +36,7 @@ class CustomColors {
   static const Color buttonShadowPink = Color.fromARGB(255, 255, 136, 175);
   static const Color widgetWhite = Color.fromARGB(255, 255, 244, 248);
   static const Color timerPink = Color.fromARGB(255, 255, 59, 196);
+  static const Color homeWhite = Color.fromARGB(232, 255, 255, 255);
 }
 
 const kHintTextStyle = TextStyle(

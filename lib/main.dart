@@ -35,7 +35,7 @@ class TriviaApp extends StatelessWidget {
               return appStateProvider.currentScreen;
             } else {
               return Scaffold(
-                appBar: const TitleWidget(),
+                appBar: TitleWidget(appStateProvider.currentScreen),
                 body: Container(
                   color: Theme.of(context).colorScheme.primaryContainer,
                   child: Padding(

@@ -56,9 +56,9 @@ class PlayerResultWidget extends StatelessWidget {
                 Text(
                   playerData.answer,
                   style: TextStyle(
-                    color: playerData.correctAnswer? Colors.green: Colors.red,
+                    color: playerData.correctAnswer ? Colors.green : Colors.red,
                     fontWeight: FontWeight.bold,
-                    fontSize: 10,
+                    fontSize: 16,
                   ),
                 ),
               ],
@@ -85,17 +85,16 @@ class PlayerData {
   String answer;
   final bool correctAnswer;
 
-
-  PlayerData(this.playerNumber, this.playerName, this.score, this.answer, this.correctAnswer) {
+  PlayerData(this.playerNumber, this.playerName, this.score, this.answer,
+      this.correctAnswer) {
     if (correctAnswer) {
       answer = "✅ $answer";
-    } else  {
+    } else {
       if (answer == 'Too Slow') {
         answer = "🐌 $answer";
       } else {
         answer = "❌ $answer";
       }
     }
-    
-  } 
+  }
 }
