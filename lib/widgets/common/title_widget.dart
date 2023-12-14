@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:trivia_goat/screens/lobby/lobby_screen.dart';
-import 'package:trivia_goat/screens/game/end_of_game.dart';
 import 'package:trivia_goat/screens/lobby/home_screen.dart';
 import 'package:trivia_goat/app_services/app_services.dart';
 import 'package:trivia_goat/global/common/constants.dart';
@@ -12,8 +10,7 @@ class TitleWidget extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool showLeadingIcon =
-        (currentScreen is LobbyScreen || currentScreen is EndOfGame);
+    final bool showLeadingIcon = currentScreen is! HomeScreen;
 
     return AppBar(
       title: const Text(
@@ -30,6 +27,7 @@ class TitleWidget extends StatelessWidget implements PreferredSizeWidget {
               icon: const Icon(Icons.home, color: CustomColors.homeWhite),
               iconSize: 30,
               onPressed: () {
+                AppServices().middlewareService.closeConnection();
                 AppServices().appStateProvider.setScreen(const HomeScreen());
               },
             )

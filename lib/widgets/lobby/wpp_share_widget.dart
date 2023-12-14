@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -25,12 +27,15 @@ class WhatsAppShareButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: const Icon(Icons.share),
-      onPressed: () => _shareGameId(context),
-      tooltip: 'Share Game ID via WhatsApp',
-      color: Colors.lightBlue,
-      iconSize: 22,
-    );
+    if (Platform.isAndroid || Platform.isIOS) {
+      return IconButton(
+        icon: const Icon(Icons.share),
+        onPressed: () => _shareGameId(context),
+        tooltip: 'Share Game ID via WhatsApp',
+        color: Colors.lightBlue,
+        iconSize: 22,
+      );
+    }
+    return Container();
   }
 }
