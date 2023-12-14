@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import 'package:frases_argentinas/app_services/app_services.dart';
-import 'package:frases_argentinas/client_messages/client_message.dart';
-import 'package:frases_argentinas/event_handler/server_event_handler.dart';
+import 'package:trivia_goat/app_services/app_services.dart';
+import 'package:trivia_goat/client_messages/client_message.dart';
+import 'package:trivia_goat/event_handler/server_event_handler.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 class Middleware {

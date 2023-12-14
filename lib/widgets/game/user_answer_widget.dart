@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frases_argentinas/models/user_answer.dart';
+import 'package:trivia_goat/models/user_answer.dart';
 
 class UserAnswerWidget extends StatelessWidget {
   final UserAnswer userAnswer;

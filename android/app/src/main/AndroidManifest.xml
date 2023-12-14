@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="frases_argentinas"
+        android:label="trivia_goat"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

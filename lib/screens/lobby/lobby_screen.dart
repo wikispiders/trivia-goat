@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:frases_argentinas/app_services/app_services.dart';
-import 'package:frases_argentinas/screens/lobby/home_screen.dart';
-import 'package:frases_argentinas/client_messages/start_game.dart';
-import 'package:frases_argentinas/widgets/lobby/players_list.dart';
-import 'package:frases_argentinas/widgets/lobby/type_widget.dart';
-import 'package:frases_argentinas/widgets/lobby/amount_widget.dart';
-import 'package:frases_argentinas/widgets/lobby/category_widget.dart';
-import 'package:frases_argentinas/widgets/lobby/gameid_widget.dart';
-import 'package:frases_argentinas/global/common/constants.dart';
+import 'package:trivia_goat/app_services/app_services.dart';
+import 'package:trivia_goat/screens/lobby/home_screen.dart';
+import 'package:trivia_goat/client_messages/start_game.dart';
+import 'package:trivia_goat/widgets/lobby/players_list.dart';
+import 'package:trivia_goat/widgets/lobby/type_widget.dart';
+import 'package:trivia_goat/widgets/lobby/amount_widget.dart';
+import 'package:trivia_goat/widgets/lobby/category_widget.dart';
+import 'package:trivia_goat/widgets/lobby/gameid_widget.dart';
+import 'package:trivia_goat/global/common/constants.dart';
 
 class LobbyScreen extends StatelessWidget {
   final bool isCreator;

@@ -1,8 +1,8 @@
-import 'package:frases_argentinas/middleware/middleware.dart';
-import 'package:frases_argentinas/provider/app_state_provider.dart';
-import 'package:frases_argentinas/provider/game_state_provider.dart';
-import 'package:frases_argentinas/provider/lobby_provider.dart';
-import 'package:frases_argentinas/provider/username_provider.dart';
+import 'package:trivia_goat/middleware/middleware.dart';
+import 'package:trivia_goat/provider/app_state_provider.dart';
+import 'package:trivia_goat/provider/game_state_provider.dart';
+import 'package:trivia_goat/provider/lobby_provider.dart';
+import 'package:trivia_goat/provider/username_provider.dart';
 
 class AppServices {
   static final AppServices _instance = AppServices._internal();

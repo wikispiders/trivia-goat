@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:frases_argentinas/app_services/app_services.dart';
-import 'package:frases_argentinas/provider/username_provider.dart';
-import 'package:frases_argentinas/screens/lobby/join_home.dart';
+import 'package:trivia_goat/app_services/app_services.dart';
+import 'package:trivia_goat/provider/username_provider.dart';
+import 'package:trivia_goat/screens/lobby/join_home.dart';
 import 'package:provider/provider.dart';
 
-import 'package:frases_argentinas/global/common/constants.dart';
+import 'package:trivia_goat/global/common/constants.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

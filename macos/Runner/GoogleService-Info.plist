@@ -15,9 +15,9 @@
 	<key>BUNDLE_ID</key>
 	<string>com.wikispiders.frases.argentinas.RunnerTests</string>
 	<key>PROJECT_ID</key>
-	<string>frases-argentinas-dev</string>
+	<string>trivia-goat-dev</string>
 	<key>STORAGE_BUCKET</key>
-	<string>frases-argentinas-dev.appspot.com</string>
+	<string>trivia-goat-dev.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>

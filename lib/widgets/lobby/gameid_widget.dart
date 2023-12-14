@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frases_argentinas/widgets/lobby/clipboard_widget.dart';
-import 'package:frases_argentinas/widgets/lobby/wpp_share_widget.dart';
+import 'package:trivia_goat/widgets/lobby/clipboard_widget.dart';
+import 'package:trivia_goat/widgets/lobby/wpp_share_widget.dart';
 
 class GameIDWidget extends StatelessWidget {
   final int gameId;

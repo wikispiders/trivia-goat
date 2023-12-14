@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "frases_argentinas" "\0"
+            VALUE "FileDescription", "trivia_goat" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "frases_argentinas" "\0"
+            VALUE "InternalName", "trivia_goat" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "frases_argentinas.exe" "\0"
-            VALUE "ProductName", "frases_argentinas" "\0"
+            VALUE "OriginalFilename", "trivia_goat.exe" "\0"
+            VALUE "ProductName", "trivia_goat" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:frases_argentinas/client_messages/client_message.dart';
+import 'package:trivia_goat/client_messages/client_message.dart';
 
 class PlayerAnswer extends ClientMessage {
   final String question;

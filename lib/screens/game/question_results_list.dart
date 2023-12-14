@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frases_argentinas/models/user_answer.dart';
-import 'package:frases_argentinas/widgets/game/question.dart';
-import 'package:frases_argentinas/widgets/game/user_answer_widget.dart';
+import 'package:trivia_goat/models/user_answer.dart';
+import 'package:trivia_goat/widgets/game/question.dart';
+import 'package:trivia_goat/widgets/game/user_answer_widget.dart';
 
 class QuestionResultsList extends StatelessWidget {
   final String question;

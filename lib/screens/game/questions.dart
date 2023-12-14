@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frases_argentinas/provider/game_state_provider.dart';
-import 'package:frases_argentinas/widgets/common/circular_timer.dart';
-import 'package:frases_argentinas/widgets/game/question.dart';
+import 'package:trivia_goat/provider/game_state_provider.dart';
+import 'package:trivia_goat/widgets/common/circular_timer.dart';
+import 'package:trivia_goat/widgets/game/question.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/game/questions_list.dart';
 

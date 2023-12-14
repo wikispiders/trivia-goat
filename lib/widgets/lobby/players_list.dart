@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frases_argentinas/provider/lobby_provider.dart';
+import 'package:trivia_goat/provider/lobby_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:frases_argentinas/global/common/constants.dart';
+import 'package:trivia_goat/global/common/constants.dart';
 
 class PlayersList extends StatelessWidget {
   const PlayersList({Key? key}) : super(key: key);

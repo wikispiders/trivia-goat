@@ -1,11 +1,11 @@
 import 'dart:convert';
-import 'package:frases_argentinas/event_handler/game/answer_submitted_handler.dart';
-import 'package:frases_argentinas/event_handler/game/question_received_handler.dart';
-import 'package:frases_argentinas/event_handler/game/question_results_handler.dart';
-import 'package:frases_argentinas/event_handler/lobby/create_event_handler.dart';
-import 'package:frases_argentinas/event_handler/lobby/join_event_handler.dart';
-import 'package:frases_argentinas/event_handler/lobby/start_game_handler.dart';
-import 'package:frases_argentinas/models/user_answer.dart';
+import 'package:trivia_goat/event_handler/game/answer_submitted_handler.dart';
+import 'package:trivia_goat/event_handler/game/question_received_handler.dart';
+import 'package:trivia_goat/event_handler/game/question_results_handler.dart';
+import 'package:trivia_goat/event_handler/lobby/create_event_handler.dart';
+import 'package:trivia_goat/event_handler/lobby/join_event_handler.dart';
+import 'package:trivia_goat/event_handler/lobby/start_game_handler.dart';
+import 'package:trivia_goat/models/user_answer.dart';
 
 import 'error_handler.dart';
 

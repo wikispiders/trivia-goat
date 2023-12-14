@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:animated_list_plus/animated_list_plus.dart';
 import 'package:animated_list_plus/transitions.dart';
-import 'package:frases_argentinas/widgets/game/player_result.dart';
+import 'package:trivia_goat/widgets/game/player_result.dart';
 import '../../models/user_answer.dart';
 
 

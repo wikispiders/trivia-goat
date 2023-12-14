@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frases_argentinas/widgets/common/countdown_clock.dart';
+import 'package:trivia_goat/widgets/common/countdown_clock.dart';
 
 class StartingGameScreen extends StatelessWidget {
   final int timeToStart;

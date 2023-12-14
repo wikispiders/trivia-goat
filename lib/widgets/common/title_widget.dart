@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:frases_argentinas/screens/lobby/lobby_screen.dart';
-import 'package:frases_argentinas/screens/game/end_of_game.dart';
-import 'package:frases_argentinas/screens/lobby/home_screen.dart';
-import 'package:frases_argentinas/app_services/app_services.dart';
-import 'package:frases_argentinas/global/common/constants.dart';
+import 'package:trivia_goat/screens/lobby/lobby_screen.dart';
+import 'package:trivia_goat/screens/game/end_of_game.dart';
+import 'package:trivia_goat/screens/lobby/home_screen.dart';
+import 'package:trivia_goat/app_services/app_services.dart';
+import 'package:trivia_goat/global/common/constants.dart';
 
 class TitleWidget extends StatelessWidget implements PreferredSizeWidget {
   final Widget currentScreen;

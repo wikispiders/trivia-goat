@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:frases_argentinas/app_services/app_services.dart';
-import 'package:frases_argentinas/event_handler/server_event_handler.dart';
-import 'package:frases_argentinas/models/user_answer.dart';
-import 'package:frases_argentinas/screens/game/partial_results.dart';
-import 'package:frases_argentinas/screens/game/question_results.dart';
+import 'package:trivia_goat/app_services/app_services.dart';
+import 'package:trivia_goat/event_handler/server_event_handler.dart';
+import 'package:trivia_goat/models/user_answer.dart';
+import 'package:trivia_goat/screens/game/partial_results.dart';
+import 'package:trivia_goat/screens/game/question_results.dart';
 
 import '../../screens/game/end_of_game.dart';
 

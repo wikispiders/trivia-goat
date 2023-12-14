@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
-import 'package:frases_argentinas/app_services/app_services.dart';
-import 'package:frases_argentinas/client_messages/play_again.dart';
-import 'package:frases_argentinas/global/common/constants.dart';
+import 'package:trivia_goat/app_services/app_services.dart';
+import 'package:trivia_goat/client_messages/play_again.dart';
+import 'package:trivia_goat/global/common/constants.dart';
 
 import '../../models/user_answer.dart';
 

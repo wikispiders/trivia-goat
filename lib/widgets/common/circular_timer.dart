@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'package:frases_argentinas/global/common/constants.dart';
+import 'package:trivia_goat/global/common/constants.dart';
 
 class CircularTimer extends StatefulWidget {
   final int totalTimeInSeconds;

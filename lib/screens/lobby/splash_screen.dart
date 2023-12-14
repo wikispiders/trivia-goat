@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frases_argentinas/screens/lobby/home_screen.dart';
-import 'package:frases_argentinas/widgets/home/loading_widget.dart';
+import 'package:trivia_goat/screens/lobby/home_screen.dart';
+import 'package:trivia_goat/widgets/home/loading_widget.dart';
 
 import '../../app_services/app_services.dart';
 

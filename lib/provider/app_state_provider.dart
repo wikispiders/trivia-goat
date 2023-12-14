@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frases_argentinas/models/user_answer.dart';
-import 'package:frases_argentinas/screens/game/partial_results.dart';
-import 'package:frases_argentinas/screens/lobby/splash_screen.dart';
+import 'package:trivia_goat/models/user_answer.dart';
+import 'package:trivia_goat/screens/game/partial_results.dart';
+import 'package:trivia_goat/screens/lobby/splash_screen.dart';
 
 class AppStateProvider extends ChangeNotifier {
   Widget _currentScreen = SplashScreen();

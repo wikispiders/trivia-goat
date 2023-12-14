@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:frases_argentinas/app_services/app_services.dart';
-import 'package:frases_argentinas/client_messages/player_answer.dart';
-import 'package:frases_argentinas/provider/game_state_provider.dart';
-import 'package:frases_argentinas/widgets/game/answer_card.dart';
+import 'package:trivia_goat/app_services/app_services.dart';
+import 'package:trivia_goat/client_messages/player_answer.dart';
+import 'package:trivia_goat/provider/game_state_provider.dart';
+import 'package:trivia_goat/widgets/game/answer_card.dart';
 import 'package:provider/provider.dart';
 
 class QuestionsList extends StatelessWidget {

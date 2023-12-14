@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frases_argentinas/global/common/constants.dart';
+import 'package:trivia_goat/global/common/constants.dart';
 
 class CategoryWidget extends StatefulWidget {
   const CategoryWidget({Key? key}) : super(key: key);
