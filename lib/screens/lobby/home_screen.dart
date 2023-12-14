@@ -10,12 +10,13 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen>
     with TickerProviderStateMixin {
   late AnimationController _fadeController;
+  final TextEditingController _textEditingController = TextEditingController();
 
   @override
   void initState() {
@@ -33,6 +34,8 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     UsernameProvider userNameProvider =
         Provider.of<UsernameProvider>(context);
+      _textEditingController.text = userNameProvider.username;
+
 
     return FadeTransition(
       opacity: _fadeController.drive(Tween(begin: 0.0, end: 1.0)),
@@ -62,6 +65,7 @@ class _HomeScreenState extends State<HomeScreen>
                 decoration: kBoxDecorationStyle,
                 height: 60.0,
                 child: TextField(
+                  controller: _textEditingController,
                   onChanged: userNameProvider.setUsername,
                   style: const TextStyle(
                     color: Colors.white,
@@ -74,8 +78,8 @@ class _HomeScreenState extends State<HomeScreen>
                       Icons.person,
                       color: Colors.white,
                     ),
-                    hintText: 'Enter your Name',
-                    hintStyle: kHintTextStyle,
+                    hintText: userNameProvider.username.isNotEmpty? null : 'Enter your Name',
+                    hintStyle: userNameProvider.username.isNotEmpty? null: kHintTextStyle,
                   ),
                 ),
               ),

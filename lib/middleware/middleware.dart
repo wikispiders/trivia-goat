@@ -12,7 +12,7 @@ class Middleware {
   static final backendHost = dotenv.get('BACKEND', fallback: 'wss://trivia-backend-p4o1.onrender.com');
   late WebSocketChannel _channel;
   bool _connected = false;
-  late StreamSubscription<dynamic> _stream_listener;
+  late StreamSubscription<dynamic> _streamListener;
 
   Middleware();
 
@@ -42,12 +42,11 @@ class Middleware {
 
   void _startListening() {
     _connected = true;
-    _stream_listener = _channel.stream.listen(
+    _streamListener = _channel.stream.listen(
       (data) async {
         Map<String, dynamic> receivedData = jsonDecode(data);
         print('Received: $receivedData}');
         ServerEventHandler handler = ServerEventHandler.fromEncodedData(data);
-        print('hay un handler');
         handler.execute();
       },
       onDone: () {
@@ -70,9 +69,8 @@ class Middleware {
 
   void closeConnection() {
     if (_connected) {
-      print('Se llama al clse');
       _channel.sink.close();
-      _stream_listener.cancel();
+      _streamListener.cancel();
     }
   }
 }

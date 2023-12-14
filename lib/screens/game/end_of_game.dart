@@ -135,7 +135,7 @@ class PodiumAvatar extends StatefulWidget {
       : super(key: key);
 
   @override
-  _PodiumAvatarState createState() => _PodiumAvatarState();
+  State<PodiumAvatar> createState() => _PodiumAvatarState();
 }
 
 class _PodiumAvatarState extends State<PodiumAvatar> with TickerProviderStateMixin {
@@ -148,7 +148,7 @@ class _PodiumAvatarState extends State<PodiumAvatar> with TickerProviderStateMix
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 600),
     );
 
     _animation = CurvedAnimation(
@@ -199,17 +199,17 @@ class _PodiumAvatarState extends State<PodiumAvatar> with TickerProviderStateMix
                 radius: 20,
                 child: Text(
                   widget.playerName[0], 
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(
               widget.playerName,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),

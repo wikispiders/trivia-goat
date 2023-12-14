@@ -7,7 +7,7 @@ class CountdownClock extends StatefulWidget {
   const CountdownClock({Key? key, required this.timeToStart}) : super(key: key);
 
   @override
-  _CountdownClockState createState() => _CountdownClockState();
+  State<CountdownClock> createState() => _CountdownClockState();
 }
 
 class _CountdownClockState extends State<CountdownClock>

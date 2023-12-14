@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+
 
 class WhatsAppShareButton extends StatelessWidget {
   final int gameId;
@@ -27,6 +29,9 @@ class WhatsAppShareButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (kIsWeb) {
+      return Container();
+    }
     if (Platform.isAndroid || Platform.isIOS) {
       return IconButton(
         icon: const Icon(Icons.share),

@@ -8,7 +8,7 @@ class ErrorHandler extends ServerEventHandler {
 
   @override
   bool execute() {
-    print('Llego un error con detaller: $details');
+    print('Llego un error con detalles: $details');
     showToast(message: details);
     return true;
   }

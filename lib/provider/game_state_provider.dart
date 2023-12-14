@@ -18,7 +18,6 @@ class GameStateProvider extends ChangeNotifier {
 
   void setAnswer(String question, String answer) {
     if (question != _currentQuestion) {
-      print('La pregunta $question no esta mas.');
       return;
     }
     _myAnswer = answer;

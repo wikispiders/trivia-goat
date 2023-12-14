@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter/services.dart';
 
 class AmountWidget extends StatefulWidget {
   const AmountWidget({Key? key}) : super(key: key);
 
   @override
-  _AmountWidgetState createState() => _AmountWidgetState();
+  State<AmountWidget> createState() => _AmountWidgetState();
 
   static final GlobalKey<_AmountWidgetState> amountKey =
       GlobalKey<_AmountWidgetState>();
 }
 
 class _AmountWidgetState extends State<AmountWidget> {
-  late int? numberOfQuestions = null;
+  late int? numberOfQuestions;
   final TextEditingController _controller = TextEditingController();
 
   @override

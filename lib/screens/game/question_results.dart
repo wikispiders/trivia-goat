@@ -61,7 +61,6 @@ class _QuestionResultsState extends State<QuestionResults>
   @override
   Widget build(BuildContext context) {
     final userAnswer = widget.usersAnswers.firstWhere((p) => p.name == AppServices().usernameProvider.username);
-    print('El name es ${userAnswer.name}');
     final myAnswer = userAnswer.answer;
 
     bool isWrongAnswerSelected =

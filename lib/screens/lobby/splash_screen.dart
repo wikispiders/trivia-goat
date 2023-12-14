@@ -5,8 +5,10 @@ import 'package:trivia_goat/widgets/home/loading_widget.dart';
 import '../../app_services/app_services.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen>
@@ -68,7 +70,7 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
             const SizedBox(height: 100),
-            LoadingWidget(),
+            const LoadingWidget(),
           ],
         ),
       ),
