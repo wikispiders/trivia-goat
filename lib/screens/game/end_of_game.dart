@@ -47,6 +47,7 @@ class EndOfGame extends StatelessWidget {
               ),
             ),
             PodiumList(orderedAnswers: orderedAnswers),
+            const SizedBox(height: 20),
             FutureBuilder<void>(
               future: Future.delayed(Duration(seconds: 1+orderedAnswers.length*2)),
               builder: (context, snapshot) => snapshot.connectionState == ConnectionState.done

@@ -14,8 +14,12 @@ class QuestionResultsHandler extends ServerEventHandler {
   final int time;
   final List<String> options;
   final int screen;
+  final int numberOfQuestion;
+  final int totalQuestions;
 
-  QuestionResultsHandler(this.question, this.correctAnswer, List<UserAnswer> answers, this.time, this.options, this.screen) {
+
+  QuestionResultsHandler(this.question, this.correctAnswer, List<UserAnswer> answers, this.time, 
+                         this.options, this.screen, this.numberOfQuestion, this.totalQuestions) {
     answers.sort((a, b) => (b.points - b.partialPoints).compareTo(a.points - a.partialPoints));
     usersAnswers = answers;
   }
@@ -34,11 +38,16 @@ class QuestionResultsHandler extends ServerEventHandler {
           options: options,
         );
       case 1:
+          print('La cantiadd es $numberOfQuestion');
+          print('La cantiadd es $totalQuestions');
+
         resultsScreen = PartialResultsScreen(
           question: question, 
           correctAnswer: correctAnswer,
           usersAnswers: usersAnswers,
           time: time,
+          numberOfQuestion: numberOfQuestion,
+          totalQuestions: totalQuestions,
         );
       case 2:
         resultsScreen = EndOfGame(

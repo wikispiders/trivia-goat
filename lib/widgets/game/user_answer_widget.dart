@@ -32,7 +32,7 @@ class UserAnswerWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            '${userAnswer.name}',
+            userAnswer.name,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: textColor,

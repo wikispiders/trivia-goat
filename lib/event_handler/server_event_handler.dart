@@ -31,7 +31,8 @@ abstract class ServerEventHandler {
         }
       case 'question':
         if (decodedData.containsKey('question') && decodedData.containsKey('options') && decodedData.containsKey('time')) {
-          return QuestionReceivedHandler(decodedData['question'], decodedData['options'].cast<String>(), decodedData['time']);
+          return QuestionReceivedHandler(decodedData['question'], decodedData['options'].cast<String>(), decodedData['time'], 
+                                         decodedData['number_of_question'], decodedData['total_questions']);
         }
       case 'answer_submitted':
         if (decodedData.containsKey('answer') && decodedData.containsKey('question')) {
@@ -43,7 +44,7 @@ abstract class ServerEventHandler {
           return QuestionResultsHandler(decodedData['question'], decodedData['correct_answer'], 
                                         List<UserAnswer>.from(decodedData['players_answers'].map((element) => UserAnswer.fromJson(element))),
                                         decodedData['time_next_event'],decodedData['options'].cast<String>(),
-                                        decodedData['screen']);
+                                        decodedData['screen'], decodedData['number_of_question'], decodedData['total_questions']);
         }
       case 'error':
         if (decodedData.containsKey('details')) {

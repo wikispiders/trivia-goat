@@ -12,6 +12,9 @@ class PartialResultsScreen extends StatefulWidget {
   final String correctAnswer;
   final List<UserAnswer> usersAnswers;
   final int time;
+  final int numberOfQuestion;
+  final int totalQuestions;
+
   
   const PartialResultsScreen({
     Key? key,
@@ -19,6 +22,8 @@ class PartialResultsScreen extends StatefulWidget {
     required this.correctAnswer,
     required this.usersAnswers,
     required this.time,
+    required this.numberOfQuestion,
+    required this.totalQuestions,
   }) : super(key: key);
 
 
@@ -66,22 +71,37 @@ class _PartialResultsScreenState extends State<PartialResultsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: ImplicitlyAnimatedList<PlayerData>(
-        key: _listKey,
-        items: playerDataList,
-        itemBuilder: (context, animation, playerData, index) {
-          return SizeFadeTransition(
-            sizeFraction: 0.7,
-            animation: animation,
-            child: Padding(
-              key: ValueKey(playerData.playerNumber),
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-              child: PlayerResultWidget(playerData: playerData),
+      body: Column(
+        children: [Expanded(
+          child: ImplicitlyAnimatedList<PlayerData>(
+            key: _listKey,
+            items: playerDataList,
+            itemBuilder: (context, animation, playerData, index) {
+              return SizeFadeTransition(
+                sizeFraction: 0.7,
+                animation: animation,
+                child: Padding(
+                  key: ValueKey(playerData.playerNumber),
+                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  child: PlayerResultWidget(playerData: playerData),
+                ),
+              );
+            },
+            areItemsTheSame: (a, b) => a.playerName == b.playerName,
+          )
+        ),
+          Text(
+            'Question ${widget.numberOfQuestion} of ${widget.totalQuestions}',
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Colors.pink,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
             ),
-          );
-        },
-        areItemsTheSame: (a, b) => a.playerName == b.playerName,
+          ),
+        ] ,
       ),
     );
   }
 }
+

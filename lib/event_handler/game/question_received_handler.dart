@@ -6,8 +6,10 @@ class QuestionReceivedHandler extends ServerEventHandler {
   final String question;
   final int time;
   final List<String> options;
+  final int numberOfQuestion;
+  final int totalQuestions;
 
-  QuestionReceivedHandler(this.question, this.options, this.time);
+  QuestionReceivedHandler(this.question, this.options, this.time, this.numberOfQuestion, this.totalQuestions);
 
   @override
   bool execute() {
