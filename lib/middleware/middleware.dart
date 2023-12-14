@@ -1,31 +1,43 @@
 import 'dart:convert';
-import 'dart:io';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:frases_argentinas/app_services/app_services.dart';
 import 'package:frases_argentinas/client_messages/client_message.dart';
 import 'package:frases_argentinas/event_handler/server_event_handler.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 class Middleware {
-  static const baseUri = "ws://192.168.0.160:4040";
-  late WebSocket _channel;
+  static final backendHost = dotenv.get('BACKEND', fallback: 'wss://trivia-backend-p4o1.onrender.com');
+  late WebSocketChannel _channel;
 
   Middleware();
 
   Future<void> create() async {
     String name = AppServices().usernameProvider.username;
-    _channel = await WebSocket.connect("$baseUri/create/$name");
-    _startListening();
+    try {
+      print('Conectandose a $backendHost');
+
+      _channel = WebSocketChannel.connect(Uri.parse("$backendHost/create/$name"));
+      _startListening();
+    } catch (error) {
+      print('Error en la conexión a $backendHost: $error');
+    }
+    
   }
 
   Future<void> join(String roomId) async {
     String name = AppServices().usernameProvider.username;
-    print('por hacer join');
-    _channel = await WebSocket.connect("$baseUri/join/$roomId/$name");
-    _startListening();
+    try {
+      print('Conectandose Join a $backendHost');
+      _channel = WebSocketChannel.connect(Uri.parse("$backendHost/join/$roomId/$name"));
+      _startListening();
+    } catch (error) {
+      print('Error en la conexión a $backendHost: $error');
+    }
   }
 
   void _startListening() {
-    _channel.listen(
+    _channel.stream.listen(
       (data) async {
         Map<String, dynamic> receivedData = jsonDecode(data);
         print('Received: $receivedData}');
@@ -43,10 +55,10 @@ class Middleware {
   }
 
   void sendMessage(ClientMessage message) {
-    _channel.add(message.encode());
+    _channel.sink.add(message.encode());
   }
 
   void closeConnection() {
-    _channel.close();
+    _channel.sink.close();
   }
 }

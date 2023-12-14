@@ -47,6 +47,8 @@ dependencies:
   animations: ^2.0.0
   confetti: ^0.7.0
   animated_list_plus: ^0.4.3
+  flutter_dotenv: ^5.1.0
+  web_socket_channel: ^2.4.0
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +71,7 @@ flutter:
     - assets/developer_logo.png
     - assets/logo_trivia.png
     - assets/join_game.png
+    - .env
 
 
   # The following line ensures that the Material Icons font is

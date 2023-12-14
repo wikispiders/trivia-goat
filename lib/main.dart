@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:frases_argentinas/app_services/app_services.dart';
 import 'package:frases_argentinas/provider/app_state_provider.dart';
@@ -6,8 +7,9 @@ import 'package:frases_argentinas/widgets/common/title_widget.dart';
 import 'package:frases_argentinas/screens/lobby/splash_screen.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
   Fluttertoast.showToast;
+  await dotenv.load(fileName: ".env");
   runApp(const TriviaApp());
 }
 
