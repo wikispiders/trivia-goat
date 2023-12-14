@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frases_argentinas/app_services/app_services.dart';
 import 'package:frases_argentinas/models/user_answer.dart';
 import 'package:frases_argentinas/widgets/game/question.dart';
-import 'package:frases_argentinas/widgets/game/user_answer_widget.dart';
 
 class QuestionResults extends StatefulWidget {
   final String question;
@@ -20,7 +20,7 @@ class QuestionResults extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _QuestionResultsState createState() => _QuestionResultsState();
+  State<QuestionResults> createState() => _QuestionResultsState();
 }
 
 class _QuestionResultsState extends State<QuestionResults>
@@ -35,7 +35,7 @@ class _QuestionResultsState extends State<QuestionResults>
 
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
     );
 
     _scaleAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -60,9 +60,12 @@ class _QuestionResultsState extends State<QuestionResults>
 
   @override
   Widget build(BuildContext context) {
+    final userAnswer = widget.usersAnswers.firstWhere((p) => p.name == AppServices().usernameProvider.username);
+    print('El name es ${userAnswer.name}');
+    final myAnswer = userAnswer.answer;
+
     bool isWrongAnswerSelected =
-        widget.usersAnswers.isNotEmpty &&
-            widget.usersAnswers[0].answer != widget.correctAnswer;
+        widget.usersAnswers.isNotEmpty && myAnswer != widget.correctAnswer;
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -91,9 +94,7 @@ class _QuestionResultsState extends State<QuestionResults>
         Column(
           children: widget.options.map((option) {
             bool isCorrectAnswer = option == widget.correctAnswer;
-            bool isSelected =
-                widget.usersAnswers.isNotEmpty &&
-                    widget.usersAnswers[0].answer == option;
+            bool isSelected = option == myAnswer;
 
             return Column(
               children: [

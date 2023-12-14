@@ -38,12 +38,12 @@ class CustomColors {
   static const Color timerPink = Color.fromARGB(255, 255, 59, 196);
 }
 
-final kHintTextStyle = TextStyle(
+const kHintTextStyle = TextStyle(
   color: Colors.white54,
   fontFamily: 'OpenSans',
 );
 
-final kLabelStyle = TextStyle(
+const kLabelStyle = TextStyle(
   color: Colors.white,
   fontWeight: FontWeight.bold,
   fontFamily: 'OpenSans',
@@ -52,7 +52,7 @@ final kLabelStyle = TextStyle(
 final kBoxDecorationStyle = BoxDecoration(
   color: const Color.fromARGB(255, 241, 108, 190),
   borderRadius: BorderRadius.circular(10.0),
-  boxShadow: [
+  boxShadow: const [
     BoxShadow(
       color: Colors.black12,
       blurRadius: 6.0,

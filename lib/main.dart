@@ -6,11 +6,11 @@ import 'package:frases_argentinas/screens/lobby/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const TriviaApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class TriviaApp extends StatelessWidget {
+  const TriviaApp({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -26,7 +26,7 @@ class EndOfGame extends StatelessWidget {
     orderedAnswers = orderedAnswers.sublist(0, min(orderedAnswers.length, 3));
 
     return Scaffold(
-      backgroundColor: Colors.pink[50],
+      backgroundColor: Colors.transparent,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

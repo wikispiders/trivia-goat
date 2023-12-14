@@ -32,7 +32,7 @@ class PlayerResultWidget extends StatelessWidget {
             ),
             alignment: Alignment.center,
             child: Text(
-              playerData.playerNumber, // A CAMBIAR POR EL PLAYER
+              playerData.playerNumber,
               style: const TextStyle(
                 color: Colors.pink,
                 fontWeight: FontWeight.bold,
@@ -42,17 +42,30 @@ class PlayerResultWidget extends StatelessWidget {
           ),
           const SizedBox(width: 16),
           Expanded(
-            child: Text(
-              playerData.playerName, // A CAMBIAR POR EL PLAYER
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  playerData.playerName,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+                Text(
+                  playerData.answer,
+                  style: TextStyle(
+                    color: playerData.correctAnswer? Colors.green: Colors.red,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 10,
+                  ),
+                ),
+              ],
             ),
           ),
           Text(
-            '${playerData.score}', // A CAMBIAR POR EL PLAYER
+            '${playerData.score}',
             style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
@@ -65,11 +78,24 @@ class PlayerResultWidget extends StatelessWidget {
   }
 }
 
-//Borrar y reemplazar por cosas del player
 class PlayerData {
   final String playerNumber;
   final String playerName;
   final int score;
+  String answer;
+  final bool correctAnswer;
 
-  PlayerData(this.playerNumber, this.playerName, this.score);
+
+  PlayerData(this.playerNumber, this.playerName, this.score, this.answer, this.correctAnswer) {
+    if (correctAnswer) {
+      answer = "✅ $answer";
+    } else  {
+      if (answer == 'Too Slow') {
+        answer = "🐌 $answer";
+      } else {
+        answer = "❌ $answer";
+      }
+    }
+    
+  } 
 }

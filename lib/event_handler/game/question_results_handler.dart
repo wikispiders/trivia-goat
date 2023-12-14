@@ -29,28 +29,18 @@ class QuestionResultsHandler extends ServerEventHandler {
           usersAnswers: usersAnswers,
           time: time,
           options: options,
-      );
-      print('El screen es 0');
+        );
       case 1:
-        resultsScreen = QuestionResultsList(
-          question: question, 
-          correctAnswer: correctAnswer,
-          usersAnswers: usersAnswers,
-          time: time,
-      );
-      print('El screen es 1');
-      case 2:
         resultsScreen = PartialResultsScreen(
           question: question, 
           correctAnswer: correctAnswer,
           usersAnswers: usersAnswers,
           time: time,
-      );
-      case 3:
-        print('se cambia la screeen');
+        );
+      case 2:
         resultsScreen = EndOfGame(
           usersAnswers: usersAnswers,
-      );
+        );
       default:
         throw Error();
     }
