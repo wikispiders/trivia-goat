@@ -6,17 +6,20 @@ import 'package:frases_argentinas/screens/game/partial_results.dart';
 import 'package:frases_argentinas/screens/game/question_results.dart';
 
 import '../../screens/game/end_of_game.dart';
-import '../../screens/game/question_results_list.dart';
 
 class QuestionResultsHandler extends ServerEventHandler {
   final String question;
   final String correctAnswer;
-  final List<UserAnswer> usersAnswers;
+  late List<UserAnswer> usersAnswers;
   final int time;
   final List<String> options;
   final int screen;
 
-  QuestionResultsHandler(this.question, this.correctAnswer, this.usersAnswers, this.time, this.options, this.screen);
+  QuestionResultsHandler(this.question, this.correctAnswer, List<UserAnswer> answers, this.time, this.options, this.screen) {
+    answers.sort((a, b) => (b.points - b.partialPoints).compareTo(a.points - a.partialPoints));
+    usersAnswers = answers;
+  }
+
 
   @override
   bool execute() {

@@ -10,18 +10,17 @@ import '../../models/user_answer.dart';
 class PartialResultsScreen extends StatefulWidget {
   final String question;
   final String correctAnswer;
-  List<UserAnswer> usersAnswers;
+  final List<UserAnswer> usersAnswers;
   final int time;
   
-  PartialResultsScreen({
+  const PartialResultsScreen({
     Key? key,
     required this.question,
     required this.correctAnswer,
     required this.usersAnswers,
     required this.time,
-  }) : super(key: key) {
-    usersAnswers.sort((a, b) => (b.points - b.partialPoints).compareTo(a.points - a.partialPoints));
-  }
+  }) : super(key: key);
+
 
   @override
   State<PartialResultsScreen> createState() => _PartialResultsScreenState();
@@ -81,7 +80,7 @@ class _PartialResultsScreenState extends State<PartialResultsScreen> {
             ),
           );
         },
-        areItemsTheSame: (a, b) => a.playerNumber == b.playerNumber,
+        areItemsTheSame: (a, b) => a.playerName == b.playerName,
       ),
     );
   }

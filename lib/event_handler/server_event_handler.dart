@@ -7,6 +7,8 @@ import 'package:frases_argentinas/event_handler/lobby/join_event_handler.dart';
 import 'package:frases_argentinas/event_handler/lobby/start_game_handler.dart';
 import 'package:frases_argentinas/models/user_answer.dart';
 
+import 'error_handler.dart';
+
 abstract class ServerEventHandler {  
   bool execute();
 
@@ -43,7 +45,10 @@ abstract class ServerEventHandler {
                                         decodedData['time_next_event'],decodedData['options'].cast<String>(),
                                         decodedData['screen']);
         }
-
+      case 'error':
+        if (decodedData.containsKey('details')) {
+          return ErrorHandler(decodedData['details']);
+        }
       default:
         throw FormatException('Invalid event: $decodedData');
     }

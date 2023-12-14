@@ -43,7 +43,7 @@ class PlayersList extends StatelessWidget {
               ),
               alignment: Alignment.center,
               child: Text(
-                'J$playerNumber',
+                playerName[0],
                 style: const TextStyle(
                     color: Colors.pink,
                     fontWeight: FontWeight.bold,
