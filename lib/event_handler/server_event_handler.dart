@@ -15,7 +15,6 @@ abstract class ServerEventHandler {
   static ServerEventHandler fromEncodedData(String data) {
     final decodedData = jsonDecode(data);
     final String? eventType = decodedData['event'];
-    print('Entra bien $decodedData');
     switch (eventType) {
       case 'create':
         if (decodedData.containsKey('gameid')) {

@@ -38,9 +38,6 @@ class QuestionResultsHandler extends ServerEventHandler {
           options: options,
         );
       case 1:
-          print('La cantiadd es $numberOfQuestion');
-          print('La cantiadd es $totalQuestions');
-
         resultsScreen = PartialResultsScreen(
           question: question, 
           correctAnswer: correctAnswer,

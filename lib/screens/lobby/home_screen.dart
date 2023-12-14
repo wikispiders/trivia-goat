@@ -66,7 +66,9 @@ class _HomeScreenState extends State<HomeScreen>
                 height: 60.0,
                 child: TextField(
                   controller: _textEditingController,
-                  onChanged: userNameProvider.setUsername,
+                  onEditingComplete: () {
+                    userNameProvider.setUsername(_textEditingController.text);
+                  },
                   style: const TextStyle(
                     color: Colors.white,
                     fontFamily: 'OpenSans',
@@ -86,6 +88,7 @@ class _HomeScreenState extends State<HomeScreen>
               const SizedBox(height: 50),
               ElevatedButton.icon(
                 onPressed: () {
+                  userNameProvider.setUsername(_textEditingController.text);
                   if (userNameProvider.username.isNotEmpty) {
                     AppServices().middlewareService.create();
                   } else {
@@ -117,6 +120,7 @@ class _HomeScreenState extends State<HomeScreen>
               const SizedBox(height: 10),
               ElevatedButton.icon(
                 onPressed: () {
+                  userNameProvider.setUsername(_textEditingController.text);
                   if (userNameProvider.username.isNotEmpty) {
                     AppServices().appStateProvider.setScreen(const JoinHome());
                   } else {
