@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 import 'package:trivia_goat/app_services/app_services.dart';
 import 'package:trivia_goat/client_messages/play_again.dart';
-import 'package:trivia_goat/global/common/constants.dart';
 
 import '../../models/user_answer.dart';
 
@@ -25,49 +24,47 @@ class EndOfGame extends StatelessWidget {
     orderedAnswers.sort((a, b) => b.points - a.points);
     orderedAnswers = orderedAnswers.sublist(0, min(orderedAnswers.length, 3));
 
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              alignment: Alignment.center,
-              decoration: kBoxDecorationStyle,
-              height: 60.0,
-              width: 200,
-              child: const Text(
-                'Podium!',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'OpenSans',
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Podium!',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 236, 10, 86),
+                    fontFamily: 'OpenSans',
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-            ),
-            PodiumList(orderedAnswers: orderedAnswers),
-            const SizedBox(height: 20),
-            FutureBuilder<void>(
-              future: Future.delayed(Duration(seconds: 1+orderedAnswers.length*2)),
-              builder: (context, snapshot) => snapshot.connectionState == ConnectionState.done
-                ? ElevatedButton(
-                    onPressed: (){AppServices().middlewareService.sendMessage(PlayAgain());},
-                    style: ButtonStyle(
-                      elevation: MaterialStateProperty.all<double>(5.0), 
-                      shadowColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 136, 175)), 
-                      shape: MaterialStateProperty.all<OutlinedBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0), 
+                PodiumList(orderedAnswers: orderedAnswers),
+                const SizedBox(height: 10),
+                FutureBuilder<void>(
+                  future: Future.delayed(Duration(seconds: 1+orderedAnswers.length*2)),
+                  builder: (context, snapshot) => snapshot.connectionState == ConnectionState.done
+                    ? ElevatedButton(
+                        onPressed: (){AppServices().middlewareService.sendMessage(PlayAgain());},
+                        style: ButtonStyle(
+                          elevation: MaterialStateProperty.all<double>(5.0), 
+                          shadowColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 136, 175)), 
+                          shape: MaterialStateProperty.all<OutlinedBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0), 
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    child: const Text('PLAY AGAIN'),
-                  ): const SizedBox.shrink(),
+                        child: const Text('PLAY AGAIN'),
+                      ): const SizedBox.shrink(),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      }
     );
   }
 }
@@ -166,7 +163,7 @@ class _PodiumAvatarState extends State<PodiumAvatar> with TickerProviderStateMix
   Widget build(BuildContext context) {
     return FadeTransition(
       opacity: _animation,
-      child: Container(
+      child: SizedBox(
         width: 200,
         child: Column(
           children: [
@@ -178,20 +175,11 @@ class _PodiumAvatarState extends State<PodiumAvatar> with TickerProviderStateMix
               numberOfParticles: 50,
             ),
             if (widget.rank == 1)
-              Image.network(
-                'https://cdn-icons-png.flaticon.com/512/1910/1910476.png', // Medalla de Oro
-                height: 100,
-              ),
+              Image.asset('assets/oro.png', height: 100,),
             if (widget.rank == 2)
-              Image.network(
-                'https://cdn-icons-png.flaticon.com/512/1910/1910479.png', // Medalla de Plata
-                height: 80,
-              ),
+              Image.asset('assets/plata.png', height: 80,),
             if (widget.rank == 3)
-              Image.network(
-                'https://cdn-icons-png.flaticon.com/512/1910/1910485.png', // Medalla de Bronce
-                height: 60,
-              ),
+              Image.asset('assets/bronce.png', height: 60,),
             CircleAvatar(
               radius: 20,
               backgroundColor: Colors.pink[400],

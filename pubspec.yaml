@@ -80,6 +80,9 @@ flutter:
     - assets/developer_logo.png
     - assets/logo_trivia.png
     - assets/join_game.png
+    - assets/bronce.png
+    - assets/plata.png
+    - assets/oro.png
     - .env
 
 
