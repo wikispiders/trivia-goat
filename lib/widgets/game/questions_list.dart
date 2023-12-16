@@ -16,7 +16,7 @@ class QuestionsList extends StatelessWidget {
     String question = gameStateProvider.currentQuestion;
     
     void pickAnswer(int value) {
-      if (selectedAnswer != null) return;
+      return;
       final answer = options[value];
       AppServices().middlewareService.sendMessage(PlayerAnswer(question, answer));
     }
