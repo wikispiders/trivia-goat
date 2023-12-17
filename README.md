@@ -1,4 +1,5 @@
-# trivia_goat
+# Trivia Goat
+Trivia Goat es un juego de interfaz de usuario sobre miles de preguntas.
 
 ## Configuración
 Se debe agregar un archivo `.env` en la raíz del proyecto, el cual contiene el host del backend. Mostramos a continuación un ejemplo del mismo.
@@ -25,13 +26,40 @@ Para compilar el proyecto, ejecutar.
 flutter build apk
 ```
 
-Luego, conectar el celular Android en el cual se quiere instalar la aplicación y habilitar la transferencia de archivos.
+Luego, conectar el celular Android en el cual se quiere instalar la aplicación y habilitar la transferencia de archivos, junto con la depuración USB en el modo desarrollador.
 
 Ejecutar 
 
 ```bash
 flutter install
 ```
+
+
+### Instalación Linux
+
+```bash
+flutter build linux
+```
+
+## Ejecución en modo desarrollo - Hot Reload
+Ejecutar desde la raiz del proyecto:
+
+```shell
+flutter run -d all
+```
+
+La aplicación se ejecutará en todos los dispositivos conectados. Si se quiere ejecutar solo en web por ejemplo, se puede ejecutar:
+
+```shell
+flutter run -d chrome
+```
+
+Solo para linux:
+
+```shell
+flutter run -d linux
+```
+
 
 ## Despliegue en Firebase
 Si se quiere desplegar la aplicación cliente web en la nube de Firebase, seguir los siguientes pasos.
