@@ -1,6 +1,46 @@
 # Trivia Goat
 Trivia Goat es un juego de interfaz de usuario sobre miles de preguntas.
 
+## Pantallas
+
+### Pantalla de espera
+
+![ezgif-2-d3a6e4c23d](https://github.com/wikispiders/trivia-goat/assets/65830097/a51935e8-aeff-42cc-8771-7a971259e4b7)
+
+### Home
+![image](https://github.com/wikispiders/trivia-goat/assets/65830097/b3aed37f-6b5d-4577-8d9e-e9d6a7dee15d)
+
+
+### Empezar Partida
+![image](https://github.com/wikispiders/trivia-goat/assets/65830097/57d8823d-ecd4-439d-996c-c4b04bc467c1)
+
+### Comenzando la Partida
+
+![ezgif-2-96ef16137a](https://github.com/wikispiders/trivia-goat/assets/65830097/bdd3431e-70f1-42ec-936a-5ac11098c0ba)
+
+### La Partida
+![ezgif-2-7cfe4a9b3f](https://github.com/wikispiders/trivia-goat/assets/65830097/2e579c05-732d-46c0-821c-ec91168d32f2)
+
+
+### Podio
+
+![ezgif-2-1a01204a83](https://github.com/wikispiders/trivia-goat/assets/65830097/c47124bd-c0ce-4083-b1d9-709532240bad)
+
+
+### Unirse a una Partida
+![image](https://github.com/wikispiders/trivia-goat/assets/65830097/64987388-525f-40fe-8ab1-dd3c81b6ce7a)
+
+### Preguntas
+#### Pregunta Incorrecta
+![image](https://github.com/wikispiders/trivia-goat/assets/65830097/ea0c5c79-3708-4cd4-9818-6cbd86e3c9c1)
+
+#### Pregunta Correcta
+![image](https://github.com/wikispiders/trivia-goat/assets/65830097/398d5fdb-32a2-447e-89b4-c5d0291e5add)
+
+
+### Fin de Partida
+
+
 ## Configuración
 Se debe agregar un archivo `.env` en la raíz del proyecto, el cual contiene el host del backend. Mostramos a continuación un ejemplo del mismo.
 
